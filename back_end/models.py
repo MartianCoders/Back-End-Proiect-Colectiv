@@ -45,3 +45,4 @@ from django.db import models
     Aici handluim miling system ul. Constituim mail urile si etc
     '''
 
+#Dragoiu Raul Ioan
