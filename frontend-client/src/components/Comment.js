@@ -23,12 +23,15 @@ const Comment = ({ comments, removeComment, updateComment }) => {
   }
   //if number of comments is bigger than 3 then the view more button
   // will appear, if you click view more it will show you more comments(10 or less)
+  
+  //"user" will be replaced with the name of the user who posted the comment.
   return <>
     {comments.map((comment, index) => {
       if(index+1>noOfCommentsToShow) return false
       return <>
           <div class="card" id="comment-card">
-            <div class="card-body" id="comment-card-body">
+            <div class="card-body" id="comment-card-body"> 
+            <h6 class="card-subtitle mb-2 text-muted">user wrote:</h6>
               <span id="text"> 
                 <div key={comment.id} >
                   {comment.text}
@@ -48,7 +51,7 @@ const Comment = ({ comments, removeComment, updateComment }) => {
     )
     }
     {noOfCommentsToShow<comments.length &&(
-      <button
+      <button id="showMoreBtn"
         onClick={()=>{setNoOfCommentsToShow(noOfCommentsToShow+10)}}
       >
         View More

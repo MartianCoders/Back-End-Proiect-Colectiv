@@ -42,6 +42,7 @@
 
   #comment-card-body {
     display:flex;
+    padding:5px;
   }
 
   div#icons{
@@ -71,5 +72,20 @@
   button#btn-icon {
     background-color: transparent;
     border:transparent;
+  }
+
+  button#showMoreBtn {
+    font-family: cursive;
+    padding: 5px;
+    border-radius: 10px;
+    background: white;
+    margin-top:10px;
+    border-color:lightgrey;
+    transition-duration: 0.4s;
+  }
+
+  button#showMoreBtn:hover {
+    background-color: #3374ec; /* Green */
+    color: white;
   }
   
