@@ -26,7 +26,7 @@ function Videos() {
 
             <CourseCard
                 courseTitle={"Advanced CSS and Sass: Flexbox, Grid, Animations and More!"}
-                imgSrc={"https://lh3.googleusercontent.com/proxy/NLUxrCyvc5ghMPxWQlf-5ZhhAYAdsOVBejwmjPb8DxzHEgjmkdagefxDehKpU9NUxeXXOCAgbVLEwgQ1oatoi3f1wTUzMNgM83LANZu2-vo3_orejgPUE0muTwZFMJiUTgRQT9C9BWtCFw"}
+                imgSrc={"https://themefisher.com/wp-content/uploads/2018/12/SASS-Compiler-Tools.jpg"}
                 videos={34}
                 rating={4.8}
                 noOfStudents={"(67)"}

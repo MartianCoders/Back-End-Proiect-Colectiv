@@ -21,7 +21,7 @@ function CourseCard(props: any) {
                 <h3 className="price">{props.price}</h3>
             </div>
 
-            <Button className="joinBtn">Join Now</Button>
+            <Button className="joinBtn">Start course</Button>
         </div>
     )
 }
