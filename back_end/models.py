@@ -44,4 +44,21 @@ from django.db import models
     '''
     Aici handluim miling system ul. Constituim mail urile si etc
     '''
-    #Daniel
+    # Category Model
+    class Category:
+      def __init__(self,title,IDlist):
+        self.__title = title
+        self.__IDlist = IDlist
+      def getTitle(self):
+        return self.__title
+      def getIDlist(self):
+        return self.__IDlist
+      def setTitle(self,newTitle):
+        self.__title=newTitle
+      def setIDlist(self,newIDList):
+        self.__IDlist=newIDList
+      def __str__(self):
+        return "{},{}".format(self.__title,
+        self.__IDlist)
+        
+      
