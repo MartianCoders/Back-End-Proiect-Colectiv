@@ -52,40 +52,14 @@ class Rating(models.Model):
     nrOfVotes = models.IntegerField()
     starsAverage = models.IntegerField()
 
-    def __innit__(self, stars, nrOfVotes, starsAverage):
-        self.__stars = stars
+    def __innit__(self, nrOfVotes, starsAverage):
         self.__nrOfVotes = nrOfVotes
         self.__starsAverage = starsAverage
 
-    def getStars(self):
-        return self.__stars
 
-    def getNrOfVotes(self):
-        return self.__nrOfVotes
-
-    def getStarsAverage(self):
-        return self.__starsAverage
-
-
-    def setStars(self, newStars):
-        self.__stars = newStars
-
-    def setNrOfVotes(self, newNrOfVotes):
-        self.__nrOfVotes = newNrOfVotes
-
-    def setStarsAverage(self, newStarsAverage):
-        self.__starsAverage = newStarsAverage
 
     def __str__(self):
         return 'Rating: {} {}'.format(
-            self.__stars,
             self.__nrOfVotes,
             self.__starsAverage)
 
-
-    def test(self):
-        rating1 = Rating(4, 1, 4)
-        assert rating1.getStars() == 4
-        rating1.setNrOfVotes(2)
-        assert rating1.getStarsAverage() == 2
-        print(rating1.__str__())
