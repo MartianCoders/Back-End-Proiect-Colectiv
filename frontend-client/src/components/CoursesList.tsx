@@ -1,16 +1,17 @@
-import React from 'react'
-import './CoursesList.css';
-import Videos from './Videos';
+import React from "react";
+import "./CoursesList.css";
+import Videos from "./Videos";
 
-function CoursesList() {
+class CoursesList extends React.Component {
+  render() {
     return (
-        <div className="coursesDiv">
-            <div className="courses">
-                <h3>Header here soon..</h3>
-                <Videos />
-            </div>
+      <div className="coursesDiv">
+        <div className="courses">
+          <Videos />
         </div>
-    )
+      </div>
+    );
+  }
 }
 
-export default CoursesList
+export default CoursesList;

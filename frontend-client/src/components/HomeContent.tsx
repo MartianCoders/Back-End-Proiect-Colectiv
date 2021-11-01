@@ -1,12 +1,16 @@
-import React from 'react'
-import CoursesList from './CoursesList'
+import React from "react";
+import CoursesList from "./CoursesList";
+import Header from "./Header";
 
-function HomeContent() {
+class HomeContent extends React.Component {
+  render() {
     return (
-        <div>
-            <CoursesList />
-        </div>
-    )
+      <div>
+        <Header />
+        <CoursesList />
+      </div>
+    );
+  }
 }
 
-export default HomeContent
+export default HomeContent;
