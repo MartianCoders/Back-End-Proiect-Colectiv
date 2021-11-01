@@ -46,7 +46,11 @@ Aici handluim miling system ul. Constituim mail urile si etc
 '''
 
 
-class Rating:
+class Rating(models.Model):
+
+    stars = models.IntegerField()
+    nrOfVotes = models.IntegerField()
+    starsAverage = models.IntegerField()
 
     def __innit__(self, stars, nrOfVotes, starsAverage):
         self.__stars = stars
