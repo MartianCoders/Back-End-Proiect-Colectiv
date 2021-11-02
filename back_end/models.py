@@ -2,43 +2,6 @@ from django.db import models
 
 # Create your models here.
 
-# Curs
-'''
-  Avem un curs care detine un map cu {titlu: list(tutoriale)}
-  Vezi LinkedIn Tutorials ca exemplu
-
-  Punctajul final (la final aratam cat are din toate)
-'''
-
-# Recenzie
-'''
-Aici votam tutorialul (stelute, numar de voturi, medie stelute)
-'''
-
-# Quiz
-'''
-Un fel de map cu intrebari si raspunsuri + un punctaj ce se adauga la cel final
-'''
-
-# Diploma
-'''
-O trimitem pe Mail generata cu numele lui si cursul absolvit
-'''
-
-# Grup
-'''
-Participanti (users) cu un fel de chat (POATE) unde trimite invitatii pe Mail
-'''
-
-# Mailing
-'''
-Aici handluim miling system ul. Constituim mail urile si etc
-'''
-
-# Recenzie
-'''
-    Aici votam tutorialul (stelute, numar de voturi, medie stelute)
-'''
 class Rating(models.Model):
 
     stars = models.IntegerField()
@@ -56,16 +19,7 @@ class Rating(models.Model):
             self.__nrOfVotes,
             self.__starsAverage)
 
-
-# -> Tutorial
-'''
-        Tutorialul este video ul in sine cu ce mai are el
-        ~ title
-        ~ video
-        ~ duration
-        ~ Recenzie (obiect)
-        ~ descriere
-'''
+      
 class Tutorial(models.Model):
 
     video = models.FileField()
@@ -92,23 +46,13 @@ class Tutorial(models.Model):
         self.__comment)
 
 
+class Comment(models.Model):
+    userName = models.CharField(max_lenght = 50)
+    content = models.CharField(max_lenght = 1000)
 
-    # Quiz
-'''
-    Un fel de map cu intrebari si raspunsuri + un punctaj ce se adauga la cel final
-    '''
+    def _init_(self, userName, content):
+        self.userName = userName
+        self.content = content
 
-    # Diploma
-'''
-    O trimitem pe Mail generata cu numele lui si cursul absolvit
-    '''
-
-    # Grup
-'''
-    Participanti (users) cu un fel de chat (POATE) unde trimite invitatii pe Mail
-    '''
-
-    # Mailing
-'''
-    Aici handluim miling system ul. Constituim mail urile si etc
-    '''
+    def _str_(self):
+        return '{}: {}'.format(self.userName, self.content)
