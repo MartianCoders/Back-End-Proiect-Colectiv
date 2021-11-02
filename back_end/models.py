@@ -1,50 +1,48 @@
 from django.db import models
 
 # Create your models here.
+    # Curs
+'''
+        Avem un curs care detine un map cu {titlu: list(tutoriale)}
+        Vezi LinkedIn Tutorials ca exemplu
 
-# Curs
-'''
-  Avem un curs care detine un map cu {titlu: list(tutoriale)}
-  Vezi LinkedIn Tutorials ca exemplu
+        Punctajul final (la final aratam cat are din toate)
+      '''
 
-  Punctajul final (la final aratam cat are din toate)
+        # -> Tutorial
 '''
+        Tutorialul este video ul in sine cu ce mai are el
+        ~ title
+        ~ video
+        ~ duration
+        ~ Recenzie (obiect)
+        ~ descriere
+        '''
 
-# -> Tutorial
+    # Recenzie
 '''
-Tutorialul este video ul in sine cu ce mai are el
-~ title
-~ video
-~ duration
-~ Recenzie (obiect)
-~ descriere
-'''
+    Aici votam tutorialul (stelute, numar de voturi, medie stelute)
+    '''
 
-# Recenzie
+    # Quiz
 '''
-Aici votam tutorialul (stelute, numar de voturi, medie stelute)
-'''
+    Un fel de map cu intrebari si raspunsuri + un punctaj ce se adauga la cel final
+    '''
 
-# Quiz
+    # Diploma
 '''
-Un fel de map cu intrebari si raspunsuri + un punctaj ce se adauga la cel final
-'''
+    O trimitem pe Mail generata cu numele lui si cursul absolvit
+    '''
 
-# Diploma
+    # Grup
 '''
-O trimitem pe Mail generata cu numele lui si cursul absolvit
-'''
+    Participanti (users) cu un fel de chat (POATE) unde trimite invitatii pe Mail
+    '''
 
-# Grup
+    # Mailing
 '''
-Participanti (users) cu un fel de chat (POATE) unde trimite invitatii pe Mail
-'''
-
-# Mailing
-'''
-Aici handluim miling system ul. Constituim mail urile si etc
-'''
-
+    Aici handluim miling system ul. Constituim mail urile si etc
+    '''
 
 class Rating(models.Model):
 
@@ -63,3 +61,14 @@ class Rating(models.Model):
             self.__nrOfVotes,
             self.__starsAverage)
 
+
+class Comment(models.Model):
+    userName = models.CharField(max_lenght = 50)
+    content = models.CharField(max_lenght = 1000)
+
+    def _init_(self, userName, content):
+        self.userName = userName
+        self.content = content
+
+    def _str_(self):
+        return '{}: {}'.format(self.userName, self.content)
