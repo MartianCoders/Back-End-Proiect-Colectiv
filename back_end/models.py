@@ -82,7 +82,13 @@ class Rating(models.Model):
         ~ Recenzie (obiect)
         ~ descriere
         '''
-class Tutorial:
+class Tutorial(models.Model):
+
+    video = models.FileField()
+    categoryID = models.IntegerField()
+    description = models.CharField(max_length=256)
+    rating = models.ManyToOneRel(Rating)
+    comment = models.ManyToOneRel(Comment)
 
     def __init__(self,id,video,categoryID,description,rating,comment):
         self.__id=id
@@ -91,31 +97,7 @@ class Tutorial:
         self.__description=description
         self.__rating=rating
         self.__comment=comment
-
-    def getID(self):
-        return self.__id
-    def getVideo(self):
-        return self.__video
-    def getCategoryID(self):
-        return self.__categoryID
-    def getDescription(self):
-        return self.__description
-    def getRating(self):
-        return self.__rating
-    def getComment(self):
-        return self.__comment
-
-    def setVideo(self,newVideo):
-        self.__video=newVideo
-    def setCategoryID (self, newCategoryID):
-        self.__categoryID=newCategoryID
-    def setDescription(self, newDescription):
-        self.__description = newDescription
-    def setRating(self, newRating):
-        self.__rating = newRating
-    def setComment (self, newComment):
-        self.__comment=newComment
-
+    
     def __str__(self):
         return 'Tutorial: {} {} {} {} {} {}'.format(
         self.__id,
@@ -125,15 +107,6 @@ class Tutorial:
         self.__rating,
         self.__comment)
 
-def test_card_class():
-    tutorial1 = Tutorial(1, 'Video1', 2, 'wow', 4, 'nimic')
-    assert tutorial1.getID() == 1
-    assert tutorial1.getDescription() == 'wow'
-    tutorial2 = Tutorial(2, 'Video2', 3, 'wow wow', 2, 'nimic nimic')
-    tutorial2.setRating(1)
-    assert tutorial2.getRating() == 1
-    print(tutorial1.__str__())
-    print(tutorial2.__str__())
 
 # Recenzie
 '''
