@@ -56,6 +56,9 @@ from django.db.models.lookups import GreaterThan
       self.__idList=idList
     def __str__(self):
       return "{}:{}".format(self.__title,self.__idList)
+<<<<<<< Updated upstream
 
         
       
+=======
+>>>>>>> Stashed changes
