@@ -1,7 +1,6 @@
 from django.db import models
 
 # Create your models here.
-
     # Curs
 '''
         Avem un curs care detine un map cu {titlu: list(tutoriale)}
@@ -44,6 +43,24 @@ from django.db import models
 '''
     Aici handluim miling system ul. Constituim mail urile si etc
     '''
+
+class Rating(models.Model):
+
+    stars = models.IntegerField()
+    nrOfVotes = models.IntegerField()
+    starsAverage = models.IntegerField()
+
+    def __innit__(self, nrOfVotes, starsAverage):
+        self.__nrOfVotes = nrOfVotes
+        self.__starsAverage = starsAverage
+
+
+
+    def __str__(self):
+        return 'Rating: {} {}'.format(
+            self.__nrOfVotes,
+            self.__starsAverage)
+
 
 class Comment(models.Model):
     userName = models.CharField(max_lenght = 50)
