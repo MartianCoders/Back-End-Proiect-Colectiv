@@ -2,23 +2,12 @@ from django.db import models
 
 # Create your models here.
 
-<<<<<<< HEAD
 # Curs
 '''
   Avem un curs care detine un map cu {titlu: list(tutoriale)}
   Vezi LinkedIn Tutorials ca exemplu
 
   Punctajul final (la final aratam cat are din toate)
-'''
-
-# -> Tutorial
-'''
-Tutorialul este video ul in sine cu ce mai are el
-~ title
-~ video
-~ duration
-~ Recenzie (obiect)
-~ descriere
 '''
 
 # Recenzie
@@ -46,7 +35,10 @@ Participanti (users) cu un fel de chat (POATE) unde trimite invitatii pe Mail
 Aici handluim miling system ul. Constituim mail urile si etc
 '''
 
-
+# Recenzie
+'''
+    Aici votam tutorialul (stelute, numar de voturi, medie stelute)
+'''
 class Rating(models.Model):
 
     stars = models.IntegerField()
@@ -64,16 +56,8 @@ class Rating(models.Model):
             self.__nrOfVotes,
             self.__starsAverage)
 
-=======
-    # Curs
-'''
-        Avem un curs care detine un map cu {titlu: list(tutoriale)}
-        Vezi LinkedIn Tutorials ca exemplu
 
-        Punctajul final (la final aratam cat are din toate)
-      '''
-
-        # -> Tutorial
+# -> Tutorial
 '''
         Tutorialul este video ul in sine cu ce mai are el
         ~ title
@@ -81,7 +65,7 @@ class Rating(models.Model):
         ~ duration
         ~ Recenzie (obiect)
         ~ descriere
-        '''
+'''
 class Tutorial(models.Model):
 
     video = models.FileField()
@@ -108,10 +92,6 @@ class Tutorial(models.Model):
         self.__comment)
 
 
-# Recenzie
-'''
-    Aici votam tutorialul (stelute, numar de voturi, medie stelute)
-    '''
 
     # Quiz
 '''
@@ -132,10 +112,3 @@ class Tutorial(models.Model):
 '''
     Aici handluim miling system ul. Constituim mail urile si etc
     '''
-<<<<<<< HEAD
-    #paul
->>>>>>> 953c996 (paul-GATA)
-=======
-
-
->>>>>>> 14f4a85 (task completed)
