@@ -44,4 +44,12 @@ from django.db import models
     '''
     Aici handluim miling system ul. Constituim mail urile si etc
     '''
-
+    # Category Model
+    class Category(models.Model):
+      title=models.CharField(max_length=30)
+      idList=models.IntegerField
+    def __init__(self,title,idList):
+      self.__title=title
+      self.__idList=idList
+    def __str__(self):
+      return "{}:{}".format(self.__title,self.__idList)
