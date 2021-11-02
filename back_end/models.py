@@ -66,7 +66,7 @@ class Rating(models.Model):
 # Category Model
 class Category(models.Model):
   title=models.CharField(max_length=30)
-  idList=models.IntegerField
+  idList=models.IntegerField()
 def __init__(self,title,idList):
   self.__title=title
   self.__idList=idList
