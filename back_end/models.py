@@ -56,6 +56,7 @@ class Comment(models.Model):
 
     def _str_(self):
         return '{}: {}'.format(self.userName, self.content)
+
 class Course(models.Model):
 
     title=models.CharField(max_lenght=100)
@@ -72,3 +73,4 @@ class Course(models.Model):
       self.__title,
       self.__description,
       self.__tutorials)
+
