@@ -56,8 +56,8 @@ class Tutorial(models.Model):
 
 
 class Comment(models.Model):
-    userName = models.CharField(max_lenght = 50)
-    content = models.CharField(max_lenght = 1000)
+    userName = models.CharField(max_length = 50)
+    content = models.CharField(max_length = 1000)
 
     def _init_(self, userName, content):
         self.userName = userName
@@ -68,7 +68,7 @@ class Comment(models.Model):
 
 class Course(models.Model):
 
-    title=models.CharField(max_lenght=100)
+    title=models.CharField(max_length=100)
     description=models.CharField(max_length=1000)
     tutorials=models.ManyToOneRel(Tutorial)
 
