@@ -8,7 +8,7 @@ class Rating(models.Model):
     nrOfVotes = models.IntegerField()
     starsAverage = models.IntegerField()
 
-    def __innit__(self, nrOfVotes, starsAverage):
+    def __init__(self, nrOfVotes, starsAverage):
         self.__nrOfVotes = nrOfVotes
         self.__starsAverage = starsAverage
 
