@@ -18,6 +18,15 @@ class Rating(models.Model):
         return 'Rating: {} {}'.format(
             self.__nrOfVotes,
             self.__starsAverage)
+# Category Model
+class Category(models.Model):
+  title=models.CharField(max_length=30)
+  idList=models.ManyToOneRel(Course)
+def __init__(self,title,idList):
+  self.__title=title
+  self.__idList=idList
+def __str__(self):
+   return "{}:{}".format(self.__title,self.__idList)
 
       
 class Tutorial(models.Model):
