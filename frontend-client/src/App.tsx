@@ -1,16 +1,16 @@
 import React from 'react';
 import { Counter } from './features/counter/Counter';
 import './App.css';
-import VideoComponents from './components/VideoComments';
+import VideoComments from './components/VideoComments';
 
-import { Navbar,Container,Nav,NavDropdown } from 'react-bootstrap';
+import LoginPage from './components/LoginPage';
 
 function App() {
   return (
     <div className="App">
       E Learning App
-    
-      <VideoComponents />
+      
+      <LoginPage />
     </div>
   );
 }
