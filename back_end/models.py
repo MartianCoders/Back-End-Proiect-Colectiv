@@ -1,48 +1,58 @@
 from django.db import models
 
+
 # Create your models here.
 
-    # Curs
-      '''
-        Avem un curs care detine un map cu {titlu: list(tutoriale)}
-        Vezi LinkedIn Tutorials ca exemplu
 
-        Punctajul final (la final aratam cat are din toate)
-      '''
+# Category Model
+class Category(models.Model):
+    title = models.CharField(max_length=30)
 
-        # -> Tutorial
-        '''
-        Tutorialul este video ul in sine cu ce mai are el
-        ~ title
-        ~ video
-        ~ duration
-        ~ Recenzie (obiect)
-        ~ descriere
-        '''
+    def __str__(self):
+        return "{}".format(self.title)
 
-    # Recenzie
-    '''
-    Aici votam tutorialul (stelute, numar de voturi, medie stelute)
-    '''
 
-    # Quiz
-    '''
-    Un fel de map cu intrebari si raspunsuri + un punctaj ce se adauga la cel final
-    '''
+class Course(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.CharField(max_length=1000)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='courses')
 
-    # Diploma
-    '''
-    O trimitem pe Mail generata cu numele lui si cursul absolvit
-    '''
+    def __str__(self):
+        return 'Course: {} {}'.format(
+            self.title,
+            self.description)
 
-    # Grup
-    '''
-    Participanti (users) cu un fel de chat (POATE) unde trimite invitatii pe Mail
-    '''
 
-    # Mailing
-    '''
-    Aici handluim miling system ul. Constituim mail urile si etc
-    '''
+class Tutorial(models.Model):
+    video = models.FileField(upload_to='videos/')
+    categoryID = models.IntegerField()
+    description = models.CharField(max_length=256)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='tutorials')
 
-# Razvan
+    def __str__(self):
+        return 'Tutorial: {} {} {} {}'.format(
+            self.id,
+            self.video,
+            self.categoryID,
+            self.description)
+
+
+class Rating(models.Model):
+    stars = models.IntegerField()
+    nrOfVotes = models.IntegerField()
+    starsAverage = models.IntegerField()
+    tutorial = models.OneToOneField(Tutorial, on_delete=models.CASCADE, related_name='rating')
+
+    def __str__(self):
+        return 'Rating: {} {}'.format(
+            self.nrOfVotes,
+            self.starsAverage)
+
+
+class Comment(models.Model):
+    userName = models.CharField(max_length=50)
+    content = models.CharField(max_length=1000)
+    tutorial = models.ForeignKey(Tutorial, on_delete=models.CASCADE, related_name='comments')
+
+    def __str__(self):
+        return '{}: {}'.format(self.userName, self.content)
