@@ -24,6 +24,7 @@ class TutorialeVideoAPIView(APIView):
 
 class TutorialVideoDetails(APIView):
 
+    # functie ajutatoare
     def get_object(self, id_video):
         return get_object_or_404(TutorialVideo, id=id_video)
 
@@ -42,6 +43,7 @@ class TutorialVideoDetails(APIView):
 
     def delete(self, request, id_video):
         video = self.get_object(id_video)
+        # adg stergere folder
         video.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response(status=status.HTTP_200_OK)
 
