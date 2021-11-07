@@ -7,7 +7,6 @@ class Sidebar extends React.Component {
     
     render(){
     return (
-        
             <ul className="sidebar-list">
             {SidebarData.map((val)=>(
                 <li className="section">
