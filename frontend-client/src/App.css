@@ -48,7 +48,7 @@ body {
 .sidebar-list{
   margin-left: auto;
   margin-right: 0;
-  width: 30%;
+  width: 28em;
   height: auto;
   max-height: 30em;
   background-color: #d5eeff;
