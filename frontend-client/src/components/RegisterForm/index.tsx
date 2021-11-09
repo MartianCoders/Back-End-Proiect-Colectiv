@@ -3,22 +3,27 @@ import 'react-bootstrap';
 import './style.css';
 
 class RegisterForm extends React.Component{
-  render() {
-    return <>
-      <form className="register-form"
-        onSubmit={(e: React.SyntheticEvent) => {
-        e.preventDefault();
+  
+  onSubmit(e: React.SyntheticEvent){
+    e.preventDefault();
         const target = e.target as typeof e.target & {
           name:{value:string}
           email: { value: string };
           password: { value: string };
+          confirmed_password: {value: string};
         };
         const name = target.name.value;
         const email = target.email.value; 
-        const password = target.password.value; 
-        console.log(email,password,name)
+        const password = target.password.value;
+        const confirmed_password = target.confirmed_password.value; 
+        if (password === confirmed_password) console.log(email,password,name)
         //@TODO: add BE route
-      }}>
+        else alert("Passwords don't match");
+  }
+  render() {
+    return <>
+      <form className="register-form"
+        onSubmit={this.onSubmit}>
         <h3 className="form-title">Sign Up</h3>
         <div className="form-group">
           <label>Name</label>
@@ -45,6 +50,15 @@ class RegisterForm extends React.Component{
             name="password" 
             className="form-control" 
             placeholder="Enter password" 
+          />
+        </div>
+        <div className="form-group">
+          <label>Confirm password</label>
+          <input 
+            type="password" 
+            name="confirmed_password" 
+            className="form-control" 
+            placeholder="Confirm password" 
           />
         </div>
         <button 
