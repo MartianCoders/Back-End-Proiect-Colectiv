@@ -1,0 +1,28 @@
+.coursesDiv {
+    padding: 60px 0px 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .courses {
+    width: 75%;
+    text-align: left;
+  }
+  
+  .courses h3 {
+    font-size: 24px;
+    color: #3c3b37;
+    margin-bottom: 10px;
+  }
+  
+  .courses h2 {
+    font-size: 26px;
+    color: #3c3b37;
+    margin-bottom: 20px;
+  }
+  
+  .courses p {
+    color: #66655e;
+  }
+  

@@ -1,15 +1,15 @@
 from django.db import models
 
-
-# Create your models here.
-
-
+      
 # Category Model
 class Category(models.Model):
-    title = models.CharField(max_length=30)
-
-    def __str__(self):
-        return "{}".format(self.title)
+  title=models.CharField(max_length=30)
+  idList=models.ManyToOneRel(Course)
+def __init__(self,title,idList):
+  self.__title=title
+  self.__idList=idList
+def __str__(self):
+   return "{}:{}".format(self.__title,self.__idList)
 
 
 class Course(models.Model):
@@ -27,6 +27,7 @@ class Tutorial(models.Model):
     video = models.FileField(upload_to='videos/')
     categoryID = models.IntegerField()
     description = models.CharField(max_length=256)
+    rating =models.ForeignKey(Rating, on_delete=models.CASCADE, related_name='ratings')
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='tutorials')
 
     def __str__(self):
