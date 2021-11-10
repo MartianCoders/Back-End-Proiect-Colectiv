@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-
+import cloudinary_storage
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'back_end',
-
+    'cloudinary_storage',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -126,3 +127,14 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Configurari cloudinary
+# Daca vreti sa stiti mai multe :https://pypi.org/project/django-cloudinary-storage/
+#
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'pavelino-is-working',
+    'API_KEY': '954597714637165',
+    'API_SECRET': '5MXMU33FOeBam3-rgrNjHY3CMjc'
+}
+MEDIA_URL = '/video/'  # or any prefix you choose
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.VideoMediaCloudinaryStorage'
