@@ -2,7 +2,7 @@ from django.db import models
 
 
 # Create your models here.
-
+# modificare
 
 # Category Model
 class Category(models.Model):
