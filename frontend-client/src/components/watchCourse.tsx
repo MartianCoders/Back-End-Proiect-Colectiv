@@ -2,7 +2,8 @@ import React, { Component, useState } from "react";
 import ReactPlayer from 'react-player/lazy'
 import CourseOverview from "./courseOverview";
 
-class WatchCourse extends React.Component {
+
+class WatchCourse extends Component {
     render() {
 
         return (
