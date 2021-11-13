@@ -3,7 +3,7 @@ from django.db import models
 
 # Create your models here.
 # modificare
-
+#noua modificare
 # Category Model
 class Category(models.Model):
     title = models.CharField(max_length=30)
