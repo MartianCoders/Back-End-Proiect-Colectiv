@@ -44,7 +44,8 @@ class Rating(models.Model):
     tutorial = models.OneToOneField(Tutorial, on_delete=models.CASCADE, related_name='rating')
 
     def __str__(self):
-        return 'Rating: {} {}'.format(
+        return 'Rating: {} {} {}'.format(
+            self.stars,
             self.nrOfVotes,
             self.starsAverage)
 
