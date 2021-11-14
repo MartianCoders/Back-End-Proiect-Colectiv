@@ -28,13 +28,15 @@ class Tutorial(models.Model):
     description = models.CharField(max_length=256)
     rating =models.ForeignKey(Rating, on_delete=models.CASCADE, related_name='ratings')
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='tutorials')
+    image = models.ImageField(upload_to='images/')
 
     def __str__(self):
-        return 'Tutorial: {} {} {} {}'.format(
+        return 'Tutorial: {} {} {} {} {}'.format(
             self.id,
             self.video,
             self.categoryID,
-            self.description)
+            self.description,
+            self.image)
 
 
 class Rating(models.Model):
