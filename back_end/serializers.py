@@ -1,5 +1,5 @@
 from rest_framework import serializers
-
+from django.shortcuts import get_object_or_404
 from back_end.models import Course, Rating, Comment, Tutorial, Category
 
 
@@ -26,7 +26,11 @@ class TutorialSerializer(serializers.ModelSerializer):
     rating = serializers.SerializerMethodField()
 
     def get_rating(self, t):
-        return RatingSerializer(Rating.objects.get(tutorial_id=t.id)).data
+        try:
+            r = Rating.objects.get(tutorial_id=t.id)
+        except Rating.DoesNotExist:
+            r = None
+        return RatingSerializer(r).data
 
     def get_comments(self, tutorial):
         return CommentSerializer(Comment.objects.filter(tutorial=tutorial.id), many=True).data
