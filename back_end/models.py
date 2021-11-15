@@ -3,16 +3,15 @@ from django.db.models.signals import post_delete, pre_save
 from django.dispatch import receiver
 
 
+
+# Create your models here.
+# modificare
+
 # Category Model
 class Category(models.Model):
     title = models.CharField(max_length=30)
-    # idList = models.ManyToOneRel(Course)
 
-# def __init__(self, title, idList):
-#     self.__title = title
-#     self.__idList = idList
     def __str__(self):
-        # return "{}:{}".format(self.__title, self.__idList)
         return "{}".format(self.title)
 
 
@@ -31,15 +30,16 @@ class Tutorial(models.Model):
     video = models.FileField('video/')
     categoryID = models.IntegerField()
     description = models.CharField(max_length=256)
-    # rating = models.ForeignKey(Rating, on_delete=models.CASCADE, related_name='ratings')
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='tutorials')
+    image = models.ImageField(upload_to='images/')
 
     def __str__(self):
-        return 'Tutorial: {} {} {} {}'.format(
+        return 'Tutorial: {} {} {} {} {}'.format(
             self.id,
             self.video,
             self.categoryID,
-            self.description)
+            self.description,
+            self.image)
 
 
 class Rating(models.Model):
