@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from back_end.models import Course, Rating, Comment, Tutorial, Category
+from .models import Course, Rating, Comment, Tutorial, Category
 
 
 class CategorySerializer(serializers.ModelSerializer):
