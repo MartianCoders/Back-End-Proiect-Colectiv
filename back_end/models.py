@@ -25,18 +25,19 @@ class Course(models.Model):
 
 class Tutorial(models.Model):
     video = models.FileField(upload_to='videos/')
-    categoryID = models.IntegerField()
+    #categoryID = models.IntegerField()
     description = models.CharField(max_length=256)
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='tutorials')
-    image = models.ImageField(upload_to='images/')
+    # image = models.ImageField(upload_to='images/')
 
     def __str__(self):
-        return 'Tutorial: {} {} {} {} {}'.format(
+        return 'Tutorial: {} {} {}'.format(
             self.id,
             self.video,
-            self.categoryID,
+            #self.categoryID,
             self.description,
-            self.image)
+            #self.image
+            )
 
 
 class Rating(models.Model):
@@ -59,3 +60,5 @@ class Comment(models.Model):
 
     def __str__(self):
         return '{}: {}'.format(self.userName, self.content)
+
+#caca
