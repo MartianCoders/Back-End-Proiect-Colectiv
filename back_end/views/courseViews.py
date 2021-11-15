@@ -3,10 +3,10 @@ from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from back_end.models import Course
+from ..models import Course
 
 # Create your views here.
-from back_end.serializers import CourseSerializer
+from ..serializers import CourseSerializer
 
 
 class CourseList(APIView):
