@@ -8,8 +8,8 @@ In folderul de back-end se gaseste un manage.py, cu acel fisier avem de lucrat:
 - "python manage.py runserver" si serverul este deschis
 
 URL:
-  /admin - platforma de manage server, putem adauga modele, sterge, etc. (Video trebuie sa fie .mp4)
+  - /admin - platforma de manage server, putem adauga modele, sterge, etc. (Video trebuie sa fie .mp4)
   NOTE: Daca nu exista un superuser, se poate crea din cmd, tot cu manage.py -> "python manage.py createsuperuser"
   
-  /courses - cursuri
-  /tutorials/[id_course] - tutoriale
+  - /courses - cursuri
+  - /tutorials/[id_course] - tutoriale
