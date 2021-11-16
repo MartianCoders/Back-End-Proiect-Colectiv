@@ -7,16 +7,18 @@ class RegisterForm extends React.Component{
   onSubmit(e: React.SyntheticEvent){
     e.preventDefault();
         const target = e.target as typeof e.target & {
-          name:{value:string}
+          name: { value: string}
+          username: { value: string}
           email: { value: string };
           password: { value: string };
           confirmed_password: {value: string};
         };
         const name = target.name.value;
+        const username = target.username.value;
         const email = target.email.value; 
         const password = target.password.value;
         const confirmed_password = target.confirmed_password.value; 
-        if (password === confirmed_password) console.log(email,password,name)
+        if (password === confirmed_password) console.log(email, username,password,name)
         //@TODO: add BE route
         else alert("Passwords don't match");
   }
@@ -32,6 +34,15 @@ class RegisterForm extends React.Component{
             name="name" 
             className="form-control" 
             placeholder="Name" 
+          />
+        </div>
+        <div className="form-group">
+          <label>Username</label>
+          <input 
+            type="text" 
+            name="username" 
+            className="form-control" 
+            placeholder="Username" 
           />
         </div>
         <div className="form-group">
