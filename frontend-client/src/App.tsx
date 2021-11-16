@@ -6,6 +6,7 @@ import VideoComponents from './components/VideoComments';
 
 import { Navbar,Container,Nav,NavDropdown } from 'react-bootstrap';
 import HomeContent from './components/HomeContent';
+import RegisterForm from './components/RegisterForm/';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <HomeContent />
     
       <VideoComponents />
+      <RegisterForm/>
     </div>
   );
 }
