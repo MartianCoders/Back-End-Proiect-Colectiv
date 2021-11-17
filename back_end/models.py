@@ -1,5 +1,8 @@
 from django.db import models
 
+from django_proiect_colectiv.settings import CLOUDINARY_STORAGE
+from cloudinary.models import CloudinaryField
+
 
 # Create your models here.
 # modificare
@@ -28,7 +31,8 @@ class Tutorial(models.Model):
     #categoryID = models.IntegerField()
     description = models.CharField(max_length=256)
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='tutorials')
-    # image = models.ImageField(upload_to='images/')
+    #image = models.ImageField(upload_to='images/',storage='cloudinary_storage.storage.MediaCloudinaryStorage')
+    image=CloudinaryField('image')
 
     def __str__(self):
         return 'Tutorial: {} {} {}'.format(
