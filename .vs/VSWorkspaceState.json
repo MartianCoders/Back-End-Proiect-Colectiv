@@ -1,6 +1,13 @@
 {
   "ExpandedNodes": [
+<<<<<<< HEAD
     ""
   ],
+=======
+    "",
+    "\\back_end"
+  ],
+  "SelectedNode": "\\back_end\\models.py",
+>>>>>>> 00c9bef90328e7a436561414873e87488ccaec4f
   "PreviewInSolutionExplorer": false
 }

@@ -1,47 +1,68 @@
 from django.db import models
 
+from django_proiect_colectiv.settings import CLOUDINARY_STORAGE
+from cloudinary.models import CloudinaryField
+
+
 # Create your models here.
+# modificare
 
-    # Curs
-      '''
-        Avem un curs care detine un map cu {titlu: list(tutoriale)}
-        Vezi LinkedIn Tutorials ca exemplu
+# Category Model
+class Category(models.Model):
+    title = models.CharField(max_length=30)
 
-        Punctajul final (la final aratam cat are din toate)
-      '''
+    def __str__(self):
+        return "{}".format(self.title)
 
-        # -> Tutorial
-        '''
-        Tutorialul este video ul in sine cu ce mai are el
-        ~ title
-        ~ video
-        ~ duration
-        ~ Recenzie (obiect)
-        ~ descriere
-        '''
 
-    # Recenzie
-    '''
-    Aici votam tutorialul (stelute, numar de voturi, medie stelute)
-    '''
+class Course(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.CharField(max_length=1000)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='courses')
 
-    # Quiz
-    '''
-    Un fel de map cu intrebari si raspunsuri + un punctaj ce se adauga la cel final
-    '''
+    def __str__(self):
+        return 'Course: {} {}'.format(
+            self.title,
+            self.description)
 
-    # Diploma
-    '''
-    O trimitem pe Mail generata cu numele lui si cursul absolvit
-    '''
 
-    # Grup
-    '''
-    Participanti (users) cu un fel de chat (POATE) unde trimite invitatii pe Mail
-    '''
+class Tutorial(models.Model):
+    video = models.FileField(upload_to='videos/')
+    #categoryID = models.IntegerField()
+    description = models.CharField(max_length=256)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='tutorials')
+    #image = models.ImageField(upload_to='images/',storage='cloudinary_storage.storage.MediaCloudinaryStorage')
+    image=CloudinaryField('image')
 
-    # Mailing
-    '''
-    Aici handluim miling system ul. Constituim mail urile si etc
-    '''
+    def __str__(self):
+        return 'Tutorial: {} {} {}'.format(
+            self.id,
+            self.video,
+            #self.categoryID,
+            self.description,
+            #self.image
+            )
 
+
+class Rating(models.Model):
+    stars = models.IntegerField()
+    nrOfVotes = models.IntegerField()
+    starsAverage = models.IntegerField()
+    tutorial = models.OneToOneField(Tutorial, on_delete=models.CASCADE, related_name='rating')
+
+    def __str__(self):
+        return 'Rating: {} {} {}'.format(
+            self.stars,
+            self.nrOfVotes,
+            self.starsAverage)
+
+
+class Comment(models.Model):
+    userName = models.CharField(max_length=50)
+    content = models.CharField(max_length=1000)
+    tutorial = models.ForeignKey(Tutorial, on_delete=models.CASCADE, related_name='comments')
+
+    def __str__(self):
+        return '{}: {}'.format(self.userName, self.content)
+
+#caca
