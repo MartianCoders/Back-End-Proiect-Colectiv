@@ -33,7 +33,7 @@ class TutorialSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Tutorial
-        fields = ['id', 'video', 'description', 'course', 'rating', 'comments']
+        fields = ['id', 'video', 'description', 'course', 'image' ,'rating', 'comments']
 
 
 class CourseSerializer(serializers.ModelSerializer):
