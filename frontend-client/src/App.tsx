@@ -1,6 +1,7 @@
 import React from 'react';
 import { Counter } from './features/counter/Counter';
 import './App.css';
+import Sidebar from './components/Sidebar';
 import LoginPage from './components/LoginPage';
 import VideoComponents from './components/VideoComments';
 
@@ -19,6 +20,7 @@ function App() {
       <VideoComponents />
       <RegisterForm/>
     </div>
+    
   );
 }
 
