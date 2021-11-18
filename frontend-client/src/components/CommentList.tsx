@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import CommentForm from './CommentForm';
 import Comment from './Comment';
-import '../style-comment.css';
+import './Comment.css';
 
 
 class CommentList extends React.Component<any,any> {

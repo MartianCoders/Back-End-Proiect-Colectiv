@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import '../style-comment.css';
+import './Comment.css';
 
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { render } from '@testing-library/react';
