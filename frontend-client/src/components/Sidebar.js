@@ -1,11 +1,12 @@
+import React from "react"
 import "../App.css"
 import {SidebarData} from './SidebarData'
 
 
-function sidebar() {
+class Sidebar extends React.Component {
     
+    render(){
     return (
-        
             <ul className="sidebar-list">
             {SidebarData.map((val)=>(
                 <li className="section">
@@ -14,9 +15,8 @@ function sidebar() {
             )
             )}
             </ul>
-            
-    
     )
+    }
 }
 
-export default sidebar
+export default Sidebar
