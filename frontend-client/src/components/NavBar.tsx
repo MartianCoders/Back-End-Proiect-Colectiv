@@ -1,13 +1,12 @@
 import React from 'react';
-import './App.css';
 import 'bootstrap/dist/css/bootstrap.css'
 import * as ReactBootStrap from "react-bootstrap";
-import img1 from './images/logo4.png';
+import img1 from '../images/logo-without-bg.png';
 
 const NavBar = () => {
     return(
-        <div className="App">
-    <ReactBootStrap.Navbar bg="light" expand={false}>
+        <div className="App" >
+    <ReactBootStrap.Navbar  expand={false}>
     <ReactBootStrap.Container fluid>
     <ReactBootStrap.Navbar.Brand href="#home">
     <img
