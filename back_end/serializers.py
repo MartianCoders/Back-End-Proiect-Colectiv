@@ -24,6 +24,9 @@ class CommentSerializer(serializers.ModelSerializer):
 class TutorialSerializer(serializers.ModelSerializer):
     comments = serializers.SerializerMethodField()
     rating = serializers.SerializerMethodField()
+    image = serializers.SerializerMethodField();
+    def get_image(self,t):
+        return t.get_image_url()
 
     def get_rating(self, t):
         return RatingSerializer(Rating.objects.get(tutorial_id=t.id)).data

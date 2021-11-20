@@ -2,6 +2,7 @@ from django.db import models
 
 from django_proiect_colectiv.settings import CLOUDINARY_STORAGE
 from cloudinary.models import CloudinaryField
+from django_proiect_colectiv import settings
 
 
 # Create your models here.
@@ -28,20 +29,23 @@ class Course(models.Model):
 
 class Tutorial(models.Model):
     video = models.FileField(upload_to='videos/')
+    #video=CloudinaryField('video')
     #categoryID = models.IntegerField()
     description = models.CharField(max_length=256)
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='tutorials')
-    #image = models.ImageField(upload_to='images/',storage='cloudinary_storage.storage.MediaCloudinaryStorage')
+    #image = models.ImageField(upload_to='images/')
     image=CloudinaryField('image')
 
     def __str__(self):
-        return 'Tutorial: {} {} {}'.format(
+        return 'Tutorial: {} {} {} {}'.format(
             self.id,
             self.video,
             #self.categoryID,
             self.description,
-            #self.image
+            self.image
             )
+    def get_image_url(self):
+        return'{}{}'.format(settings.CLOUDINARY_ROOT_URL,self.image)
 
 
 class Rating(models.Model):
