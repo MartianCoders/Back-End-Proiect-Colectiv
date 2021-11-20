@@ -24,7 +24,7 @@ class CommentSerializer(serializers.ModelSerializer):
 class TutorialSerializer(serializers.ModelSerializer):
     comments = serializers.SerializerMethodField()
     rating = serializers.SerializerMethodField()
-    image = serializers.SerializerMethodField();
+    image = serializers.SerializerMethodField()
     def get_image(self,t):
         return t.get_image_url()
 
@@ -44,7 +44,10 @@ class CourseSerializer(serializers.ModelSerializer):
     #
     # def get_tutorials(self, course):
     #     return TutorialSerializer(Tutorial.objects.filter(course=course.id), many=True).data
+    image = serializers.SerializerMethodField()
+    def get_image(self,t):
+        return t.get_imageCourses_url()
 
     class Meta:
         model = Course
-        fields = ['id', 'title', 'description', 'category', 'tutorials']
+        fields = ['id', 'title', 'description', 'category', 'tutorials', 'image']
