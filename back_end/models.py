@@ -20,11 +20,16 @@ class Course(models.Model):
     title = models.CharField(max_length=100)
     description = models.CharField(max_length=1000)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='courses')
+    image = CloudinaryField('image')
 
     def __str__(self):
-        return 'Course: {} {}'.format(
+        return 'Course: {} {} {}'.format(
             self.title,
-            self.description)
+            self.description,
+            self.image)
+    
+    def get_imageCourses_url(self):
+        return'{}{}'.format(settings.CLOUDINARY_ROOT_URL,self.image)
 
 
 class Tutorial(models.Model):
