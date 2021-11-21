@@ -7,10 +7,10 @@ class Header extends React.Component {
   render() {
     return (
       <div className="header">
-        <div className="search-bar">
+        <div className="search-bar ms-5">
           <SearchBar />
         </div>
-        <div className="sort-dropdown">
+        <div className="sort-dropdown me-5">
           <Sort />
         </div>
       </div>
