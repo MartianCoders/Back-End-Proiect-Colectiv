@@ -132,7 +132,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': 'pavelino-is-working',
     'API_KEY': '954597714637165',
-    'API_SECRET': '5MXMU33FOeBam3-rgrNjHY3CMjc'
+    'API_SECRET': '5MXMU33FOeBam3-rgrNjHY3CMjc',
 }
 MEDIA_URL = '/video/'  # or any prefix you choose
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.VideoMediaCloudinaryStorage'
