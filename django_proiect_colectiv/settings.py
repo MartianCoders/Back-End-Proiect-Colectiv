@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'back_end',
     'rest_framework',
     'cloudinary',
+    'accounts',
+    'knox'
 ]
 
 MIDDLEWARE = [
@@ -74,6 +76,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'django_proiect_colectiv.wsgi.application'
 
+# Authentication Method
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication',)
+}
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
