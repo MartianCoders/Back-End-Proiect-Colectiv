@@ -7,14 +7,20 @@ from back_end.models import Course
 
 # Create your views here.
 from back_end.serializers import CourseSerializer
-
+from rest_framework import permissions
+from back_end.permissions import IsOwnerOrReadOnly
 
 class CourseList(APIView):
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
+
     def get(self, request, format=None):
         courses = Course.objects.all()
         serializer = CourseSerializer(courses, many=True)
 
         return Response(serializer.data)
+
+    def perform_create(self, serializer):
+        serializer.save(user_id = self.request.user)
 
 
 class CourseDetail(APIView):
