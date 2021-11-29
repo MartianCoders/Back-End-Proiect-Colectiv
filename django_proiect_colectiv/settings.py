@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import cloudinary.api
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -140,6 +141,13 @@ CLOUDINARY_STORAGE = {
     'API_KEY': '954597714637165',
     'API_SECRET': '5MXMU33FOeBam3-rgrNjHY3CMjc',
 }
+
+cloudinary.config(
+  cloud_name = "pavelino-is-working",
+  api_key = "954597714637165",
+  api_secret = "5MXMU33FOeBam3-rgrNjHY3CMjc"
+)
+
 MEDIA_URL = '/video/'  # or any prefix you choose
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.VideoMediaCloudinaryStorage'
 CLOUDINARY_ROOT_URL = 'https://res.cloudinary.com/pavelino-is-working/'
