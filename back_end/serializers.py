@@ -55,12 +55,3 @@ class CourseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Course
         fields = ['id', 'title', 'description', 'category', 'tutorials', 'image', 'user_id']
-
-
-
-class CurrentUserCoursesSerializer(serializers.ModelSerializer):
-    myCourses = serializers.PrimaryKeyRelatedField(many=True, queryset=Course.objects.all())
-
-    class Meta:
-        model = User
-        fields = ['id', 'username', 'email', 'myCourses']
