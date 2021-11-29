@@ -143,3 +143,6 @@ CLOUDINARY_STORAGE = {
 MEDIA_URL = '/video/'  # or any prefix you choose
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.VideoMediaCloudinaryStorage'
 CLOUDINARY_ROOT_URL = 'https://res.cloudinary.com/pavelino-is-working/'
+
+# Asta e pt a specifica ce model ar trb user sa fie
+AUTH_USER_MODEL = "accounts.MyUser"
