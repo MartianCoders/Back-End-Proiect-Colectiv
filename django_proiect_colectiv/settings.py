@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'back_end',
     'rest_framework',
     'cloudinary',
+    'accounts',
+    'knox'
 ]
 
 MIDDLEWARE = [
@@ -74,6 +76,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'django_proiect_colectiv.wsgi.application'
 
+# Authentication Method
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication',)
+}
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
@@ -137,3 +143,6 @@ CLOUDINARY_STORAGE = {
 MEDIA_URL = '/video/'  # or any prefix you choose
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.VideoMediaCloudinaryStorage'
 CLOUDINARY_ROOT_URL = 'https://res.cloudinary.com/pavelino-is-working/'
+
+# Asta e pt a specifica ce model ar trb user sa fie
+AUTH_USER_MODEL = "accounts.MyUser"
