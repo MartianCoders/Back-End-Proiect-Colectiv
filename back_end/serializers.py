@@ -42,10 +42,6 @@ class TutorialSerializer(serializers.ModelSerializer):
 
 
 class CourseSerializer(serializers.ModelSerializer):
-    # tutorials = serializers.SerializerMethodField()
-    #
-    # def get_tutorials(self, course):
-    #     return TutorialSerializer(Tutorial.objects.filter(course=course.id), many=True).data
     image = serializers.SerializerMethodField()
     user_id = serializers.ReadOnlyField(source = 'user_id.username')
 
