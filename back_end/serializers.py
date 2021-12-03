@@ -1,5 +1,7 @@
 from rest_framework import serializers
 
+from django.contrib.auth.models import User
+
 from back_end.models import Course, Rating, Comment, Tutorial, Category
 
 
@@ -40,14 +42,12 @@ class TutorialSerializer(serializers.ModelSerializer):
 
 
 class CourseSerializer(serializers.ModelSerializer):
-    # tutorials = serializers.SerializerMethodField()
-    #
-    # def get_tutorials(self, course):
-    #     return TutorialSerializer(Tutorial.objects.filter(course=course.id), many=True).data
     image = serializers.SerializerMethodField()
+    user_id = serializers.ReadOnlyField(source = 'user_id.username')
+
     def get_image(self,t):
         return t.get_imageCourses_url()
 
     class Meta:
         model = Course
-        fields = ['id', 'title', 'description', 'category', 'tutorials', 'image']
+        fields = ['id', 'title', 'description', 'category', 'tutorials', 'image', 'user_id']

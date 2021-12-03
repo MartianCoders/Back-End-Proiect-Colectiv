@@ -10,6 +10,7 @@ import json
 # Create your views here.
 from back_end.serializers import CourseSerializer
 from accounts.serializers import LoginSerializer, UserSerializer
+from back_end.permissions import IsOwnerOrReadOnly
 
 cloudinary.config(
     cloud_name = 'pavelino-is-working',
@@ -18,11 +19,16 @@ cloudinary.config(
     secure = True
 )
 class CourseList(APIView):
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
+
     def get(self, request, format=None):
         courses = Course.objects.all()
         serializer = CourseSerializer(courses, many=True)
 
         return Response(serializer.data)
+
+    def perform_create(self, serializer):
+        serializer.save(user_id = self.request.user)
 
 
 class CourseDetail(APIView):
@@ -38,6 +44,18 @@ class CourseDetail(APIView):
 
         return Response(serializer.data)
 
+
+class MyCourses(APIView):
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
+
+    def get(self, request, format=None):
+        courses = self.request.user.Course.all()
+        serializer = CourseSerializer(courses, many=True)
+
+        return Response({
+            "user": self.request.user.id,
+            "courses": serializer.data
+        })
 
 class AddCourseView(APIView):
     permission_classes = [
