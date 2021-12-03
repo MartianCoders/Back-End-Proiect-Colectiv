@@ -45,6 +45,6 @@ class MyCourses(APIView):
         serializer = CourseSerializer(courses, many=True)
 
         return Response({
-            "user":"Testing",
+            "user": self.request.user.id,
             "courses": serializer.data
         })

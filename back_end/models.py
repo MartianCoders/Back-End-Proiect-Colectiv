@@ -21,7 +21,7 @@ class Course(models.Model):
     description = models.CharField(max_length=1000)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='courses')
     image = CloudinaryField('image')
-    user_id = models.ForeignKey('auth.User', related_name='Course', on_delete=models.CASCADE)
+    user_id = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='Course', on_delete=models.CASCADE)
 
     def __str__(self):
         return 'Course: {} {} {} {}'.format(
