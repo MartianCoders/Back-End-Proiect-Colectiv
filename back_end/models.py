@@ -21,12 +21,15 @@ class Course(models.Model):
     description = models.CharField(max_length=1000)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='courses')
     image = CloudinaryField('image')
+    user_id = models.ForeignKey('auth.User', related_name='Course', on_delete=models.CASCADE)
 
     def __str__(self):
-        return 'Course: {} {} {}'.format(
+        return 'Course: {} {} {} {}'.format(
             self.title,
             self.description,
-            self.image)
+            self.image, 
+            self.user_id)
+            
     
     def get_imageCourses_url(self):
         return'{}{}'.format(settings.CLOUDINARY_ROOT_URL,self.image)
