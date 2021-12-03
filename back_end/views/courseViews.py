@@ -7,10 +7,12 @@ from back_end.models import Course, Category
 from rest_framework import status
 import cloudinary
 import json
+from accounts.models import MyUser
 # Create your views here.
 from back_end.serializers import CourseSerializer
 from accounts.serializers import LoginSerializer, UserSerializer
 from back_end.permissions import IsOwnerOrReadOnly
+from django_proiect_colectiv import settings
 
 cloudinary.config(
     cloud_name = 'pavelino-is-working',
@@ -71,7 +73,7 @@ class AddCourseView(APIView):
             courseData = request.data
             category = Category.objects.get(id=courseData['category'])
             course = Course.objects.create(title=courseData['title'], description=courseData['description'], category=category,
-                                  image=cloudinary.CloudinaryImage(courseData['image']))
+                                  image=cloudinary.CloudinaryImage(courseData['image']), user_id=user)
             course.save()
             return Response({
                 'user': UserSerializer(user).data,
