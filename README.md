@@ -8,12 +8,19 @@ In folderul de back-end se gaseste un manage.py, cu acel fisier avem de lucrat:
 - "python manage.py migrate" crearea DB ului
 - "python manage.py runserver" si serverul este deschis
 
-URL:
-  - /admin - platforma de manage server, putem adauga modele, sterge, etc. (Video trebuie sa fie .mp4)
-  NOTE: Daca nu exista un superuser, se poate crea din cmd, tot cu manage.py -> "python manage.py createsuperuser"
-  
-  - /courses - cursuri
-  - /tutorials/[id_course] - tutoriale
+# URL:
+  - admin/ -> ADMIN
+  - courses/ -> cursurile
+  - courses/<int:pk>/ -> reviews de la un curs, id curs
+  - mycourses/ -> cursurile unui user (with token)
+  - courses/<int:courseId>/tutorials -> tutorialele unui curs dupa ID de curs
+  - api/auth -> TESTING
+  - api/auth/register -> Se creeaza un cont (se returneaza si un token)
+  - api/auth/login -> Login user (serverul o sa returneze un token pe langa contul in sine)
+  - api/auth/user -> Get user details (with token)
+  - api/auth/logout -> Logout cont (with token)
+
+# NOTE: Daca nu exista un superuser, se poate crea din cmd, tot cu manage.py -> "python manage.py createsuperuser"
 
 # ATENTIE
 
