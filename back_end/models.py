@@ -60,7 +60,8 @@ class Rating(models.Model):
     stars = models.IntegerField()
     nrOfVotes = models.IntegerField()
     starsAverage = models.IntegerField()
-    tutorial = models.OneToOneField(Tutorial, on_delete=models.CASCADE, related_name='rating')
+    # tutorial = models.OneToOneField(Tutorial, on_delete=models.CASCADE, related_name='rating')
+    course = models.OneToOneField(Course, on_delete=models.CASCADE, related_name='rating')
 
     def __str__(self):
         return 'Rating: {} {} {}'.format(
