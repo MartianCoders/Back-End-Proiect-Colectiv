@@ -10,6 +10,7 @@ from back_end.serializers import CourseSerializer
 from rest_framework import permissions
 from back_end.permissions import IsOwnerOrReadOnly
 
+
 class CourseList(APIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
 
