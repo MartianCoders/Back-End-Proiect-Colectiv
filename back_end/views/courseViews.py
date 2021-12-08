@@ -14,12 +14,14 @@ from accounts.serializers import LoginSerializer, UserSerializer
 from back_end.permissions import IsOwnerOrReadOnly
 from django_proiect_colectiv import settings
 
+
 cloudinary.config(
     cloud_name = 'pavelino-is-working',
     api_key = '954597714637165',
     api_secret = '5MXMU33FOeBam3-rgrNjHY3CMjc',
     secure = True
 )
+
 class CourseList(APIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
 
