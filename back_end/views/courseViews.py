@@ -76,7 +76,9 @@ class AddCourseView(APIView):
             except:
                 category = Category.objects.create(title=courseData['category'])
                 category.save()
+            uploadResult = cloudinary.uploader.upload(courseData['image'])
+            imageName = uploadResult['public_id']+'.'+uploadResult["format"]
             course = Course.objects.create(title=courseData['title'], description=courseData['description'], category=category,
-                                  image=cloudinary.CloudinaryImage(courseData['image']), user_id=user)
+                                  image=cloudinary.CloudinaryImage(imageName), user_id=user)
             course.save()
             return Response({}, status=status.HTTP_200_OK)
