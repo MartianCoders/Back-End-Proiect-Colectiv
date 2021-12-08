@@ -25,29 +25,33 @@ class CommentSerializer(serializers.ModelSerializer):
 
 class TutorialSerializer(serializers.ModelSerializer):
     comments = serializers.SerializerMethodField()
-    rating = serializers.SerializerMethodField()
+    # rating = serializers.SerializerMethodField()
     image = serializers.SerializerMethodField()
     def get_image(self,t):
         return t.get_image_url()
 
-    def get_rating(self, t):
-        return RatingSerializer(Rating.objects.get(tutorial_id=t.id)).data
+    # def get_rating(self, t):
+    #     return RatingSerializer(Rating.objects.get(tutorial_id=t.id)).data
 
     def get_comments(self, tutorial):
         return CommentSerializer(Comment.objects.filter(tutorial=tutorial.id), many=True).data
 
     class Meta:
         model = Tutorial
-        fields = ['id', 'video', 'description', 'course', 'image' ,'rating', 'comments']
+        fields = ['id', 'video', 'description', 'course', 'image', 'comments']
 
 
 class CourseSerializer(serializers.ModelSerializer):
     image = serializers.SerializerMethodField()
     user_id = serializers.ReadOnlyField(source = 'user_id.username')
+    rating = serializers.SerializerMethodField()
 
     def get_image(self,t):
         return t.get_imageCourses_url()
 
+    def get_rating(self, t):
+        return RatingSerializer(Rating.objects.get(courseId=t.id)).data
+
     class Meta:
         model = Course
-        fields = ['id', 'title', 'description', 'category', 'tutorials', 'image', 'user_id']
+        fields = ['id', 'title', 'description', 'category', 'tutorials', 'image', 'rating', 'user_id']
