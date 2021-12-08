@@ -59,11 +59,11 @@ class MyCourses(APIView):
             "courses": serializer.data
         })
 
+
 class AddCourseView(APIView):
     permission_classes = [
         permissions.IsAuthenticated,
     ]
-    serializer_class = CourseSerializer
 
     def post(self, request, *args, **kwargs):
         user = request.user
@@ -71,11 +71,12 @@ class AddCourseView(APIView):
             return Response({"error": "The user is not creator."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         else:
             courseData = request.data
-            category = Category.objects.get(id=courseData['category'])
+            try:
+                category = Category.objects.get(title=courseData['category'])
+            except:
+                category = Category.objects.create(title=courseData['category'])
+                category.save()
             course = Course.objects.create(title=courseData['title'], description=courseData['description'], category=category,
                                   image=cloudinary.CloudinaryImage(courseData['image']), user_id=user)
             course.save()
-            return Response({
-                'user': UserSerializer(user).data,
-                'course': CourseSerializer(course).data
-            })
+            return Response({}, status=status.HTTP_200_OK)
