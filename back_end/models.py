@@ -70,11 +70,10 @@ class Rating(models.Model):
 
 
 class Comment(models.Model):
-    userName = models.CharField(max_length=50)
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='Comment', on_delete=models.CASCADE)
     content = models.CharField(max_length=1000)
     tutorial = models.ForeignKey(Tutorial, on_delete=models.CASCADE, related_name='comments')
 
     def __str__(self):
-        return '{}: {}'.format(self.userName, self.content)
+        return '{}: {}'.format(self.user_id.username, self.content)
 
-#caca
