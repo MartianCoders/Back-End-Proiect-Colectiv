@@ -17,12 +17,12 @@ class CommentList(APIView):
         except Tutorial.DoesNotExist:
             raise Http404
 
-    def get(self, request, courseID, tutorialID):
+    def get(self, request,  tutorialID):
         comments = self.get_tutorial(tutorialID).comments.all()
         serializer = CommentSerializer(comments, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
-    def post(self, request, courseID, tutorialID):
+    def post(self, request,  tutorialID):
         user = self.request.user
 
         if user.__str__() != "AnonymousUser":  # this is the worst way to verify if a user is not logged in.
