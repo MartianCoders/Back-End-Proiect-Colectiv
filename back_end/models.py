@@ -78,3 +78,21 @@ class Comment(models.Model):
     def __str__(self):
         return '{}: {}'.format(self.user_id.username, self.content)
 
+
+class Quiz(models.Model):
+    user_id = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="quizzes", on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name_plural = "Quizzes"
+
+
+class Question(models.Model):
+    quiz_id = models.ForeignKey(Quiz, related_name="questions", on_delete=models.CASCADE)
+    statement = models.CharField(max_length=256)
+    first_answer = models.CharField(max_length=100)
+    second_answer = models.CharField(max_length=100)
+    third_answer = models.CharField(max_length=100)
+    correct_answer = models
+
+    class Meta:
+        unique_together = ('quiz_id', 'statement')
