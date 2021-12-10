@@ -69,6 +69,9 @@ class Rating(models.Model):
             self.nrOfVotes,
             self.starsAverage)
 
+    def get_stars(self):
+        return self.stars
+
 
 class Comment(models.Model):
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='Comment', on_delete=models.CASCADE)
@@ -77,4 +80,14 @@ class Comment(models.Model):
 
     def __str__(self):
         return '{}: {}'.format(self.user_id.username, self.content)
+
+class Review(models.Model):
+    comment=models.CharField(max_length=1000)
+    rating = models.ForeignKey(Rating, related_name='Reviews', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return 'Review: {} {}'.format(
+            self.comment,
+            self.rating
+        )
 

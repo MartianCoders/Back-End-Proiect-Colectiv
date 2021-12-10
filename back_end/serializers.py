@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 
-from back_end.models import Course, Rating, Comment, Tutorial, Category
+from back_end.models import Course, Rating, Comment, Review, Tutorial, Category
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -57,3 +57,13 @@ class CourseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Course
         fields = ['id', 'title', 'description', 'category', 'tutorials', 'image', 'rating', 'user_id']
+
+class ReviewSerializer(serializers.ModelSerializer):
+    stars = serializers.SerializerMethodField()
+
+    def get_stars(self,r):
+        return r.rating.get_stars()
+
+    class Meta:
+        model = Review
+        fields = ['comment', 'stars']
