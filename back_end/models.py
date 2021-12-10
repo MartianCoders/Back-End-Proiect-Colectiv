@@ -39,7 +39,7 @@ class Tutorial(models.Model):
     video = models.FileField(upload_to='videos/')
     #video=CloudinaryField('video')
     #categoryID = models.IntegerField()
-    description = models.CharField(max_length=256)
+    title = models.CharField(max_length=256)
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='tutorials')
     #image = models.ImageField(upload_to='images/')
     image=CloudinaryField('image')
@@ -49,7 +49,7 @@ class Tutorial(models.Model):
             self.id,
             self.video,
             #self.categoryID,
-            self.description,
+            self.title,
             self.image
             )
     def get_image_url(self):
