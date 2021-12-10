@@ -92,7 +92,7 @@ class Question(models.Model):
     first_answer = models.CharField(max_length=100)
     second_answer = models.CharField(max_length=100)
     third_answer = models.CharField(max_length=100)
-    correct_answer = models
+    correct_answer = models.IntegerField()
 
     class Meta:
         unique_together = ('quiz_id', 'statement')
