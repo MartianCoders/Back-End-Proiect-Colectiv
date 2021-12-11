@@ -1,19 +1,10 @@
-.register-form{
-  display: block;
-  width: 50vw;
-  margin: 50px auto ;
-  padding: 30px 10px 15px 10px;
-  background: #fff7e6;
-}
-.form-group{
-  margin: 5px;
-}
+
 .form-group label{
   float: left;
 }
 .btn.btn-primary.btn-block{
   width: 150px;
-  background: #009900;
-  border: #248f24;
+  background: #345cdf;
+  margin: 5px auto;
 }
   

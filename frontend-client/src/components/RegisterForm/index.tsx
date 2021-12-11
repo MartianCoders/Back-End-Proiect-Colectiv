@@ -1,6 +1,7 @@
 import React from 'react';
 import 'react-bootstrap';
 import './style.css';
+import '../../style-login.css';
 
 class RegisterForm extends React.Component{
   
@@ -24,9 +25,11 @@ class RegisterForm extends React.Component{
   }
   render() {
     return <>
-      <form className="register-form"
+      <form className="loginContainer register-form"
         onSubmit={this.onSubmit}>
-        <h3 className="form-title">Sign Up</h3>
+        <div className="title">
+          <h2 title="signup">signup</h2>
+        </div>
         <div className="form-group">
           <label>Name</label>
           <input 
