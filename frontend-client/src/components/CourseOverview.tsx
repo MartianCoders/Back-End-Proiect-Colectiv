@@ -1,6 +1,7 @@
 import React, { Component, useState } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import SearchIcon from '@mui/icons-material/Search';
+import VideoComments from "./VideoComments";
 
 interface OverviewState {
     bar : number;
@@ -46,13 +47,16 @@ class CourseOverview extends Component<OverviewStateProps, OverviewState>{
                         {this.state.bar == 1 ? <div style={{ display: "flex", justifyContent: "flex-start", flexDirection: "row" }}>
                             This is an overview.
                         </div> : this.state.bar == 2 ? <div style={{ display: "flex", justifyContent: "flex-start", flexDirection: "row" }}>
-                            Add questions.
+                        <   VideoComments />
                         </div> : this.state.bar == 3 ? <div style={{ display: "flex", justifyContent: "flex-start", flexDirection: "row" }}>
                             Notes.
                         </div> : this.state.bar == 4 ? <div style={{ display: "flex", justifyContent: "flex-start", flexDirection: "row" }}>
                             Announcements.
                         </div> : null}
                     </div>
+                </div>
+                <div>
+
                 </div>
             </div>
         );

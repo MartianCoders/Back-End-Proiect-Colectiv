@@ -10,6 +10,7 @@ import HomePage from './components/HomePage';
 import {Route,Routes,Navigate} from 'react-router-dom';
 import LoginPage from './components/LoginPage';
 import { useNavigate } from 'react-router-dom';
+import WatchCourse from './components/WatchCourse';
 
 function App () {
   
@@ -29,6 +30,7 @@ function App () {
         <Route path='/home' element={<HomePage />}></Route>
         <Route path='/login' element={<LoginPage navigate={navigate}/>}></Route>
         <Route path='/' element={<Navigate to="/login"/>}></Route>
+        <Route path='/watch-course' element={<WatchCourse />}></Route>
       </Routes>
     </div>
     );

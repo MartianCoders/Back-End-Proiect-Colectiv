@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css'
 import * as ReactBootStrap from "react-bootstrap";
-import img1 from '../images/logo-without-bg.png';
+import img1 from '../login.png';
 
 const NavBar = () => {
     return(
