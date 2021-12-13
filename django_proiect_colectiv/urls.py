@@ -20,6 +20,8 @@ from back_end.views import *
 from django.conf.urls.static import static
 from django.conf import settings
 
+from back_end.views.reviewViews import ReviewList
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,6 +31,7 @@ urlpatterns = [
     path('courses/<int:courseId>/tutorials', TutorialList.as_view()),
     path('courses/create', AddCourseView.as_view()),
     path('tutorials/<int:tutorialID>/comments', CommentList.as_view()),
+    path('courses/<int:courseId>/reviews', ReviewList.as_view()),
     path('courses/create/<int:courseId>/quiz', AddQuiz.as_view()),
     path("", include('accounts.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
