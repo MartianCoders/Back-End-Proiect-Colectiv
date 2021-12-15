@@ -2,7 +2,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from back_end.models import Course
+from back_end.models import Course, Question, Quiz
 from back_end.serializers import QuizSerializer
 
 
@@ -21,3 +21,14 @@ class AddQuiz(APIView):
                 serializer.save()
                 return Response({}, status=status.HTTP_200_OK)
             return Response({"error": "Could not create the quiz."}, status=status.HTTP_400_BAD_REQUEST)
+
+
+class QuizList(APIView):
+    def get(self, request, format=None):
+        quizList = Quiz.objects.all()
+        serializer = QuizSerializer(quizList, many=True)
+
+        return Response(serializer.data)
+
+
+            

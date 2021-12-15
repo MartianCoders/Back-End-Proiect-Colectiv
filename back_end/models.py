@@ -1,6 +1,4 @@
 from django.db import models
-from django.db.models.fields import CommaSeparatedIntegerField
-
 from django_proiect_colectiv.settings import CLOUDINARY_STORAGE
 from cloudinary.models import CloudinaryField
 from django_proiect_colectiv import settings
@@ -103,6 +101,9 @@ class Review(models.Model):
 class Quiz(models.Model):
     user_id = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="quizzes", on_delete=models.CASCADE)
 
+    def __str__(self):
+            return '{}'.format(self.user_id.username)
+
     class Meta:
         verbose_name_plural = "Quizzes"
 
@@ -114,6 +115,9 @@ class Question(models.Model):
     second_answer = models.CharField(max_length=100)
     third_answer = models.CharField(max_length=100)
     correct_answer = models.IntegerField()
+
+    def __str__(self):
+        return '{}: {}, {}, {}'.format(self.statement, self.first_answer, self.second_answer, self.third_answer)
 
     class Meta:
         unique_together = ('quiz_id', 'statement')

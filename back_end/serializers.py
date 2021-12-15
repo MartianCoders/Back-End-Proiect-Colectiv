@@ -1,9 +1,5 @@
 from rest_framework import serializers
-
-
-from back_end.models import Course, Rating, Comment, Review, Tutorial, Category, Quiz
-
-
+from back_end.models import Course, Rating, Comment, Review, Tutorial, Category, Quiz, Question, Review
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
@@ -68,7 +64,7 @@ class ReviewSerializer(serializers.ModelSerializer):
     def get_stars(self,r):
         return r.rating.get_stars()
         
-	def get_comment(self, r):
+    def get_comment(self, r):
         return r.comment.get_content()
 
     def get_name(self,r):
@@ -81,11 +77,12 @@ class ReviewSerializer(serializers.ModelSerializer):
 
 class QuestionSerializer(serializers.ModelSerializer):
     class Meta:
+        model = Question
         fields = ['id', 'quiz_id', 'statement', 'first_answer', 'second_answer', 'third_answer', 'correct_answer']
 
 
 class QuizSerializer(serializers.ModelSerializer):
-    questions = QuestionSerializer(source="questions")
+    questions = QuestionSerializer("questions", many = True)
 
     class Meta:
         model = Quiz

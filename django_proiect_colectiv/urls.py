@@ -33,5 +33,7 @@ urlpatterns = [
     path('tutorials/<int:tutorialID>/comments', CommentList.as_view()),
     path('courses/<int:courseId>/reviews', ReviewList.as_view()),
     path('courses/create/<int:courseId>/quiz', AddQuiz.as_view()),
+    path('quizes/', QuizList.as_view()),
+    path('quizes/<int:quizId>/answer', AddQuizAnswer.as_view()),
     path("", include('accounts.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
