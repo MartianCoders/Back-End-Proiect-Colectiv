@@ -62,13 +62,21 @@ class CourseSerializer(serializers.ModelSerializer):
 
 class ReviewSerializer(serializers.ModelSerializer):
     stars = serializers.SerializerMethodField()
+    commentt = serializers.SerializerMethodField()
+    name = serializers.SerializerMethodField()
 
     def get_stars(self,r):
         return r.rating.get_stars()
+        
+	def get_comment(self, r):
+        return r.comment.get_content()
+
+    def get_name(self,r):
+        return r.comment.get_owner()
 
     class Meta:
         model = Review
-        fields = ['comment', 'stars']
+        fields = ['id','name', 'comment','stars']
 
 
 class QuestionSerializer(serializers.ModelSerializer):

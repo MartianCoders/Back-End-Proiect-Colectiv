@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.fields import CommaSeparatedIntegerField
 
 from django_proiect_colectiv.settings import CLOUDINARY_STORAGE
 from cloudinary.models import CloudinaryField
@@ -78,12 +79,18 @@ class Comment(models.Model):
     content = models.CharField(max_length=1000)
     tutorial = models.ForeignKey(Tutorial, on_delete=models.CASCADE, related_name='comments')
 
+    def get_owner(self):
+        return self.owner.username
+
+    def get_content(self):
+        return self.content
+
     def __str__(self):
-        return '{}: {}'.format(self.user_id.username, self.content)
+        return '{}: {}'.format(self.owner.username, self.content)
 
 
 class Review(models.Model):
-    comment=models.CharField(max_length=1000)
+    comment=models.ForeignKey(Comment,related_name='Reviews', on_delete=models.CASCADE)
     rating = models.ForeignKey(Rating, related_name='Reviews', on_delete=models.CASCADE)
 
     def __str__(self):
