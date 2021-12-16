@@ -6,6 +6,7 @@ import VideoComponents from './components/VideoComments';
 
 import { Navbar,Container,Nav,NavDropdown } from 'react-bootstrap';
 import HomeContent from './components/HomeContent';
+import AddCoursePage from './components/AddCoursePage/AddCoursePage';
 import HomePage from './components/HomePage';
 import {Route,Routes,Navigate} from 'react-router-dom';
 import LoginPage from './components/LoginPage';
@@ -29,6 +30,7 @@ function App () {
         <Route path='/home' element={<HomePage />}></Route>
         <Route path='/login' element={<LoginPage navigate={navigate}/>}></Route>
         <Route path='/' element={<Navigate to="/login"/>}></Route>
+        <Route path='/addcourse' element={<AddCoursePage />}></Route>
       </Routes>
     </div>
     );
