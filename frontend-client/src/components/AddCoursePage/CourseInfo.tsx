@@ -33,6 +33,7 @@ export default class CourseInfo extends Component<ICourseProps, ICourseState> {
         videos: 0,
     };
 
+
     componentDidMount(){
         this.setState({
             title: this.props.title,
@@ -59,35 +60,17 @@ export default class CourseInfo extends Component<ICourseProps, ICourseState> {
         this.setState({isActive: false});
     }
 
-    onChangeTitle = (el: any) => {
-        this.setState({title: el.target.value});
-        console.log(this.state);
-    }
-
-    onChangeTutor = (e: any) => {
-        this.setState({tutor: e.target.value});
-        console.log(this.state);
-    }
-
-    onChangeCategory = (e: any) => {
-        this.setState({category: e.target.value});
-        console.log(this.state);
-    }
+    handleChange = (fieldName: keyof ICourseState) => (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    ) => {
+        this.setState({ ...this.state, [fieldName]: e.currentTarget.value});
+    };
 
     onChangeThumbnail = (event: any) => {
         this.setState({
             isActive: true,
             images: URL.createObjectURL(event.target.files[0])
         })
-    }
-
-    onChangeVideos = (e: any) => {
-        this.setState({videos: e.target.value});
-    }
-
-    onChangeDescription = (e: any) => {
-        this.setState({description: e.target.value});
-        console.log(this.state);
     }
 
     render() {
@@ -105,23 +88,23 @@ export default class CourseInfo extends Component<ICourseProps, ICourseState> {
                         </label>
                         <div className="name">
                             <label>Course Name</label>
-                            <textarea value={this.state.title} onChange={this.onChangeTitle} className="full"></textarea>
+                            <textarea value={this.state.title} onChange={this.handleChange("title")} className="full"></textarea>
                         </div>
                         <div className="tutor">
                             <label>Tutor Name</label>
-                            <input value={this.state.tutor} onChange={this.onChangeTutor} className="full"/>
+                            <input value={this.state.tutor} onChange={this.handleChange("tutor")} className="full"/>
                         </div>
                         <div className="category">
                             <label>Category</label>
-                            <input value={this.state.category} onChange={this.onChangeCategory} className="full"/>
+                            <input value={this.state.category} onChange={this.handleChange("category")} className="full"/>
                         </div>
                         <div className="videos">
                             <label>Videos</label>
-                            <input value={this.state.videos === 0 ? "" : this.state.videos} onChange={this.onChangeVideos} className="full"/>
+                            <input value={this.state.videos === 0 ? "" : this.state.videos} onChange={this.handleChange("videos")} className="full"/>
                         </div>
                         <div className="description">
                             <label>Short Description</label>
-                            <input value={this.state.description} onChange={this.onChangeDescription} className="full"/>
+                            <input value={this.state.description} onChange={this.handleChange("description")} className="full"/>
                         </div>
                         <div className="blood">
                             <label>Your Expertise</label>
