@@ -100,9 +100,10 @@ class Review(models.Model):
 
 class Quiz(models.Model):
     user_id = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="quizzes", on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, related_name="quizzes", on_delete=models.CASCADE)
 
     def __str__(self):
-            return '{}'.format(self.user_id.username)
+            return '{}, {}'.format(self.user_id.username, self.course_id)
 
     class Meta:
         verbose_name_plural = "Quizzes"

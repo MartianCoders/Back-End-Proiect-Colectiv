@@ -58,7 +58,7 @@ class CourseSerializer(serializers.ModelSerializer):
 
 class ReviewSerializer(serializers.ModelSerializer):
     stars = serializers.SerializerMethodField()
-    commentt = serializers.SerializerMethodField()
+    comment = serializers.SerializerMethodField()
     name = serializers.SerializerMethodField()
 
     def get_stars(self,r):

@@ -56,7 +56,7 @@ class AddQuizAnswer(APIView):
             return Response({"error":"You should answer to all questions!"}, status=status.HTTP_400_BAD_REQUEST)
         else:
             if numberAnswers > numberQuestions:
-                return Response({"error":"You should answer to a questions just once!"}, status=status.HTTP_400_BAD_REQUEST)
+                return Response({"error":"Too many answers!"}, status=status.HTTP_400_BAD_REQUEST)
 
         userCorrectAnswers = 0
         for answer in answers:
@@ -93,3 +93,14 @@ class AddQuizAnswer(APIView):
             ]
         }
         '''
+
+class GetQuizListByCourseId(APIView):
+    def get(self, request, courseId, format=None):
+
+        if not Course.objects.filter(pk = courseId).exists():
+                return Response({"error": "The course does not exist."}, status=status.HTTP_400_BAD_REQUEST)
+
+        quizes = Quiz.objects.filter(course__pk=courseId)
+        serializer = QuizSerializer(quizes, many=True)
+
+        return Response(serializer.data)
