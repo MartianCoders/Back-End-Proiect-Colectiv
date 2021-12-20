@@ -117,8 +117,7 @@ class Question(models.Model):
     correct_answer = models.IntegerField()
 
     def __str__(self):
-        return '{}: {}, {}, {}'.format(self.statement, self.first_answer, self.second_answer, self.third_answer)
+        return '{}, {}, {}, {}, {}'.format(self.statement, self.first_answer, self.second_answer, self.third_answer, self.correct_answer)
 
     class Meta:
         unique_together = ('quiz_id', 'statement')
-
