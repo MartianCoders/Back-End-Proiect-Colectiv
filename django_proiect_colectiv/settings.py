@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import cloudinary.api
+import cloudinary.uploader
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -31,6 +34,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'cloudinary_storage',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,6 +42,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'back_end',
+    'rest_framework',
+    'cloudinary',
+    'accounts',
+    'knox'
 ]
 
 MIDDLEWARE = [
@@ -70,6 +78,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'django_proiect_colectiv.wsgi.application'
 
+# Authentication Method
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication',)
+}
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
@@ -77,7 +89,7 @@ WSGI_APPLICATION = 'django_proiect_colectiv.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': str(os.path.join(BASE_DIR, "db.sqlite3"))
     }
 }
 
@@ -124,3 +136,22 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'pavelino-is-working',
+    'API_KEY': '954597714637165',
+    'API_SECRET': '5MXMU33FOeBam3-rgrNjHY3CMjc',
+}
+
+cloudinary.config(
+  cloud_name = "pavelino-is-working",
+  api_key = "954597714637165",
+  api_secret = "5MXMU33FOeBam3-rgrNjHY3CMjc"
+)
+
+MEDIA_URL = '/video/'  # or any prefix you choose
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.VideoMediaCloudinaryStorage'
+CLOUDINARY_ROOT_URL = 'https://res.cloudinary.com/pavelino-is-working/'
+
+# Asta e pt a specifica ce model ar trb user sa fie
+AUTH_USER_MODEL = "accounts.MyUser"
