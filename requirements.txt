@@ -34,6 +34,6 @@ six
 sqlparse
 toml
 tomli
-typing-extensions
+typing_extensions
 urllib3
 Werkzeug
