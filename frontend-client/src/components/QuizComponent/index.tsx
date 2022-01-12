@@ -80,6 +80,64 @@ type questions = {
         },
 }
 
+//sample
+// const questions={
+//     question1:{
+//       id:1,
+//       question:'What was the topic of this video?',
+//       answers:[
+//         {id_ans:1,
+//         label:'python',
+//         is_correct:true},
+//         {id_ans:2,
+//         label:'c++',
+//         is_correct:false,},
+//         {id_ans:3,
+//         label:'java',
+//         is_correct:false,},
+//         {id_ans:4,
+//         label:'c#',
+//         is_correct:false,}
+//         ],
+//     },
+//     question2:{
+//       id:2,
+//       question:'What was the topic of this video?',
+//       answers:[
+//         {id_ans:1,
+//         label:'python',
+//         is_correct:true},
+//         {id_ans:2,
+//         label:'c++',
+//         is_correct:false,},
+//         {id_ans:3,
+//         label:'java',
+//         is_correct:false,},
+//         {id_ans:4,
+//         label:'c#',
+//         is_correct:false,}
+//         ],
+//     },
+//     question3:{
+//       id:3,
+//       question:'What was the topic of this video?',
+//       answers:[
+//         {id_ans:1,
+//         label:'python',
+//         is_correct:true},
+//         {id_ans:2,
+//         label:'c++',
+//         is_correct:false,},
+//         {id_ans:3,
+//         label:'java',
+//         is_correct:false,},
+//         {id_ans:4,
+//         label:'c#',
+//         is_correct:false,}
+//         ],
+//     }
+//   }
+
 class Quiz extends React.Component<any,any>{
     constructor(props:any){
         super(props)
