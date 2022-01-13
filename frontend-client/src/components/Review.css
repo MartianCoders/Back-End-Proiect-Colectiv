@@ -1,0 +1,84 @@
+.container {
+    display: flex;
+    justify-content: flex-start;
+    place-items: center;
+    background-color: #fff;
+    margin: 0;
+    margin-top: 10px;
+}
+
+.box {
+    width: auto;
+    height: auto;
+    text-align: center;
+    background-color: black;
+    box-shadow: 0 0 25px 60x black;
+    padding: 20px;
+    border-radius: 40px;
+}
+
+.wrapper {
+    height: 70px;
+    width: 71px;
+    overflow: hidden;
+    position: absolute;
+}
+
+input {
+    display: none;
+}
+
+.rating {
+    display: flex; 
+    justify-content: center;
+    flex-direction:  row-reverse;
+    height: 100px;
+}
+
+label {
+    cursor: pointer;
+    width: 45px;
+    font-size: 1.9rem;
+    margin-top:  auto;
+    color: white;
+    transition: .6s;
+}
+
+h4 {
+    font-family: cursive;
+    color: white;
+    font-size: 16px;
+}
+
+.emoji {
+    display: flex;
+    flex-direction: column;
+    font-size: 45px;
+    transition: all .5s ease;
+}
+
+input:checked~ label,
+input:not(:checked)~label:hover,
+input:not(:checked)~label:hover~label {
+    color:yellow;
+}
+
+#five:checked~.wrapper>.emoji {
+    transform: translateY(0px);
+}
+
+#four:checked~.wrapper>.emoji {
+    transform: translateY(-70px);
+}
+
+#three:checked~.wrapper>.emoji {
+    transform: translateY(-140px);
+}
+
+#two:checked~.wrapper>.emoji {
+    transform: translateY(-205px);
+}
+
+#one:checked~.wrapper>.emoji {
+    transform: translateY(-275px);
+}

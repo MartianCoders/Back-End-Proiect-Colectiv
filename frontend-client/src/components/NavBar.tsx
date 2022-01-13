@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import * as ReactBootStrap from "react-bootstrap";
 import img1 from '../login.png';
 
+
 const NavBar = () => {
     return(
         <div className="App" >
@@ -12,7 +13,7 @@ const NavBar = () => {
                 <ReactBootStrap.Navbar.Brand href="#home" className='ms-5'>
                   <img
                         alt=""
-                        src= {img1}
+                        src="se.png"
                         width="80"
                         height="80"
                         

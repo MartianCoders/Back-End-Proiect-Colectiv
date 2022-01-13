@@ -1,0 +1,9 @@
+#CarouselHomePage {
+    height: 480px;
+    max-width: 1920px;
+}
+
+
+.img-fluid {
+    padding-bottom: 20%;
+}
