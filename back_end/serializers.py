@@ -53,7 +53,7 @@ class CourseSerializer(serializers.ModelSerializer):
         return t.get_imageCourses_url()
 
     def get_rating(self, t):
-        return RatingSerializer(Rating.objects.get(courseId=t.id)).data
+        return RatingSerializer(Rating.objects.get(course=t.id)).data
 
     class Meta:
         model = Course
