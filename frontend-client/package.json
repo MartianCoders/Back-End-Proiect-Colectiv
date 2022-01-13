@@ -63,6 +63,10 @@
   "devDependencies": {
     "@types/bootstrap": "^5.1.6",
     "@types/jquery": "^3.5.8",
-    "@types/react-star-rating-component": "^1.4.1"
+    "@types/react-star-rating-component": "^1.4.1",
+    "@types/redux-logger": "^3.0.9",
+    "axios": "^0.24.0",
+    "redux-logger": "^3.0.6",
+    "redux-persist": "^6.0.0"
   }
 }
