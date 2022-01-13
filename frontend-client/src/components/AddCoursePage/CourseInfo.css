@@ -44,7 +44,7 @@ aside.context .explanation {
     border: 2px solid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(4, auto);
-    grid-template-areas: "thumbnail name name" "thumbnail tutor category" "thumbnail videos description" "thumbnail blood blood";
+    grid-template-areas: "thumbnail name name" "thumbnail category category" "thumbnail description description" "thumbnail blood blood";
 }
 
 .id__wrapper > div {
@@ -245,7 +245,7 @@ input.full:focus, textarea.full:focus {
     grid-gap: 5px;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto 60px repeat(4, auto);
-    grid-template-areas: "thumbnail thumbnail" "name name" "tutor tutor" "category category" "blood blood" "videos description";
+    grid-template-areas: "thumbnail thumbnail" "name name" "tutor tutor" "category category" "blood blood" "description description";
 }
 
 .as-card .id__wrapper:before {

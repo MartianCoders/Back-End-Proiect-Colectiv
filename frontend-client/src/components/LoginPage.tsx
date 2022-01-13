@@ -25,11 +25,15 @@ class LoginPage extends React.Component<any,any> {
         this.props.navigate("/home", { replace: true });
     }
 
+    registerUser = () => {
+        this.props.navigate("/register");
+    }
+
     render() {
         const { isPasswordShown } = this.state;
         return (   
         <div className="loginContainer">
-            <div className="title">
+            <div className="title-login">
                 <h2 title="Login">Login </h2>    
             </div>
             <Form>
@@ -57,6 +61,9 @@ class LoginPage extends React.Component<any,any> {
                    <i className="fas fa-sign-in-alt" aria-hidden="true"/> Sign in! 
                 </Button>
                 </Form>
+                <Button className="register" variant="secondary" style={{width: '100%'}} onClick={this.registerUser}>
+                    <i className="fas fa-user-plus" aria-hidden="true"/> Register!
+                </Button>
             </div>
         );
     }
