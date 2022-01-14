@@ -155,3 +155,4 @@ CLOUDINARY_ROOT_URL = 'https://res.cloudinary.com/pavelino-is-working/'
 
 # Asta e pt a specifica ce model ar trb user sa fie
 AUTH_USER_MODEL = "accounts.MyUser"
+CORS_ORIGIN_ALLOW = True
