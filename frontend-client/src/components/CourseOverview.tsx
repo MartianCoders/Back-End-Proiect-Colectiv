@@ -20,7 +20,7 @@ class CourseOverview extends Component<OverviewStateProps, OverviewState>{
     render() {
         return (
             <div>
-                <div style={{ width: "1020px" }}>
+                <div style={{ width: "1920px" }}>
                     <Navbar bg="light" variant="light">
                         <Container>
                             <SearchIcon />
@@ -33,14 +33,6 @@ class CourseOverview extends Component<OverviewStateProps, OverviewState>{
                                     ...this.state,
                                     bar : 2
                                 }) }}>Q&A</Nav.Link>
-                                <Nav.Link onClick={() => { this.setState({
-                                    ...this.state,
-                                    bar : 3
-                                }) }}>Notes</Nav.Link>
-                                <Nav.Link onClick={() => { this.setState({
-                                    ...this.state,
-                                    bar : 4
-                                }) }}>Announcements</Nav.Link>
                             </Nav>
                         </Container>
 
