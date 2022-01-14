@@ -30,9 +30,9 @@ function App () {
       <Routes>
         <Route path='/home' element={<HomePage />}></Route>
         <Route path='/login' element={<LoginPage navigate={navigate}/>}></Route>
+        <Route path='/register' element={<RegisterPage/>}></Route>
         <Route path='/' element={<Navigate to="/login"/>}></Route>
         <Route path='/addcourse' element={<AddCoursePage />}></Route>
-        <Route path='/register' element={<RegisterPage />} />
       </Routes>
     </div>
     );
