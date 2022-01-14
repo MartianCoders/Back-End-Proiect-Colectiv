@@ -48,6 +48,10 @@ INSTALLED_APPS = [
     'knox'
 ]
 
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+]
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
