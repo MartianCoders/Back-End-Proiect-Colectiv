@@ -1,4 +1,7 @@
 from rest_framework import serializers
+from django.core.exceptions import ObjectDoesNotExist
+import logging
+logger = logging.getLogger("mylogger")
 
 
 from back_end.models import Course, Rating, Comment, Review, Tutorial, Category, Quiz
@@ -53,11 +56,15 @@ class CourseSerializer(serializers.ModelSerializer):
         return t.get_imageCourses_url()
 
     def get_rating(self, t):
-        return RatingSerializer(Rating.objects.get(course=t.id)).data
+        try:
+            return RatingSerializer(Rating.objects.get(course=t.id)).data
+        except ObjectDoesNotExist:
+            return []
 
     class Meta:
         model = Course
         fields = ['id', 'title', 'description', 'category', 'tutorials', 'image', 'rating', 'user_id']
+        extra_kwargs = {'rating': {'required': False}} 
 
 
 class ReviewSerializer(serializers.ModelSerializer):
