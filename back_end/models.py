@@ -79,7 +79,7 @@ class Comment(models.Model):
     tutorial = models.ForeignKey(Tutorial, on_delete=models.CASCADE, related_name='comments')
 
     def __str__(self):
-        return '{}: {}'.format(self.user_id.username, self.content)
+        return '{}: {}'.format(self.owner.username, self.content)
 
 
 class Review(models.Model):
