@@ -45,12 +45,14 @@ class NavBar extends React.Component<any,any> {
                 <ReactBootStrap.Navbar.Brand href="#home" className='ms-5'style={{display:"flex",flexDirection:"row"}}>
                   <img
                         alt=""
-                        src="se.png"
+                        src={img1}
                         width="80"
                         height="80"
                         
                       />
-                  <ReactBootStrap.Nav.Link style={{marginTop:20}} onClick={this.handleHome}>Home</ReactBootStrap.Nav.Link>
+                  {
+                    localStorage.getItem('token') ? 
+                    <ReactBootStrap.Nav.Link style={{marginTop:20}} onClick={this.handleHome}>Home</ReactBootStrap.Nav.Link> : ""}
                 </ReactBootStrap.Navbar.Brand>
                 
               
