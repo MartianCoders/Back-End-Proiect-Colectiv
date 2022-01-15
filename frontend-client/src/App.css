@@ -45,18 +45,17 @@ body {
 }
 
 .sidebar-list{
-  margin-left: auto;
+  margin-left: 1px;
   margin-right: 0;
-  width: 28em;
-  height: auto;
-  max-height: 30em;
+  width: 30%;
+  height: 450px;
+  min-height: 450px;
   background-color: #d5eeff;
-  cursor: pointer;
-  
-  overflow: hidden;
   overflow-y: scroll;
   padding: 0%;
-  font-size: 0.7em;
+  font-size: 0.6em;
+  position: sticky;
+  top: 0;
   
 }
 
@@ -64,9 +63,9 @@ body {
   padding: 0.2em;;
   height: 2em;
   width: 100%;
-  border: 0.2px solid grey;
+  border: 0.5px solid grey;
   list-style-type:  none;
-  font-size: 1.2em;
+  font-size: 2em;
 }
 
 a{

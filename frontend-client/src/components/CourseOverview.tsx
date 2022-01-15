@@ -1,6 +1,7 @@
 import React, { Component, useState } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import SearchIcon from '@mui/icons-material/Search';
+import VideoComments from "./VideoComments";
 import Review from "./Review";
 
 
@@ -19,7 +20,7 @@ class CourseOverview extends Component<OverviewStateProps, OverviewState>{
     render() {
         return (
             <div>
-                <div style={{ width: "1020px" }}>
+                <div style={{ width: "1920px" }}>
                     <Navbar bg="light" variant="light">
                         <Container>
                             <SearchIcon />
@@ -32,14 +33,6 @@ class CourseOverview extends Component<OverviewStateProps, OverviewState>{
                                     ...this.state,
                                     bar : 2
                                 }) }}>Q&A</Nav.Link>
-                                <Nav.Link onClick={() => { this.setState({
-                                    ...this.state,
-                                    bar : 3
-                                }) }}>Notes</Nav.Link>
-                                <Nav.Link onClick={() => { this.setState({
-                                    ...this.state,
-                                    bar : 4
-                                }) }}>Announcements</Nav.Link>
                             </Nav>
                         </Container>
 
@@ -52,13 +45,16 @@ class CourseOverview extends Component<OverviewStateProps, OverviewState>{
                             <Review />
                             
                         </div> : this.state.bar == 2 ? <div style={{ display: "flex", justifyContent: "flex-start", flexDirection: "row" }}>
-                            Add questions.
+                        <   VideoComments />
                         </div> : this.state.bar == 3 ? <div style={{ display: "flex", justifyContent: "flex-start", flexDirection: "row" }}>
                             Notes.
                         </div> : this.state.bar == 4 ? <div style={{ display: "flex", justifyContent: "flex-start", flexDirection: "row" }}>
                             Announcements.
                         </div> : null}
                     </div>
+                </div>
+                <div>
+
                 </div>
             </div>
         );
