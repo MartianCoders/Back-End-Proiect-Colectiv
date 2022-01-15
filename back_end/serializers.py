@@ -1,5 +1,12 @@
 from rest_framework import serializers
+
 from back_end.models import Course, Rating, Comment, Review, Tutorial, Category, Quiz, Question, Review
+
+from django.core.exceptions import ObjectDoesNotExist
+import logging
+logger = logging.getLogger("mylogger")
+
+
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
@@ -33,11 +40,14 @@ class TutorialSerializer(serializers.ModelSerializer):
     #     return RatingSerializer(Rating.objects.get(tutorial_id=t.id)).data
 
     def get_comments(self, tutorial):
-        return CommentSerializer(Comment.objects.filter(tutorial=tutorial.id), many=True).data
+        try:
+            return CommentSerializer(Comment.objects.filter(tutorial=tutorial.id), many=True).data
+        except ObjectDoesNotExist:
+            return []
 
     class Meta:
         model = Tutorial
-        fields = ['id', 'video', 'description', 'course', 'image', 'comments']
+        fields = ['id', 'video', 'course', 'image', 'comments']
 
 
 class CourseSerializer(serializers.ModelSerializer):
@@ -49,11 +59,15 @@ class CourseSerializer(serializers.ModelSerializer):
         return t.get_imageCourses_url()
 
     def get_rating(self, t):
-        return RatingSerializer(Rating.objects.get(courseId=t.id)).data
+        try:
+            return RatingSerializer(Rating.objects.get(course=t.id)).data
+        except ObjectDoesNotExist:
+            return []
 
     class Meta:
         model = Course
         fields = ['id', 'title', 'description', 'category', 'tutorials', 'image', 'rating', 'user_id']
+        extra_kwargs = {'rating': {'required': False}} 
 
 
 class ReviewSerializer(serializers.ModelSerializer):

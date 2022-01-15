@@ -48,6 +48,10 @@ INSTALLED_APPS = [
     'knox'
 ]
 
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+]
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -155,3 +159,4 @@ CLOUDINARY_ROOT_URL = 'https://res.cloudinary.com/pavelino-is-working/'
 
 # Asta e pt a specifica ce model ar trb user sa fie
 AUTH_USER_MODEL = "accounts.MyUser"
+CORS_ORIGIN_ALLOW = True
