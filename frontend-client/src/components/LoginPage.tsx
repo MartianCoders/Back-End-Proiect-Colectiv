@@ -6,7 +6,7 @@ import App from '../App';
 import AppActions from '../App.actions';
 import { IAppState } from '../reducers/app';
 import '../style-login.css';
-
+import NavBar from "./NavBar";
 
 class LoginPage extends React.Component<any,any> {
     constructor(props:any){
@@ -56,37 +56,42 @@ class LoginPage extends React.Component<any,any> {
         const { isPasswordShown } = this.state;
         // console.log(this.props)
         // console.log(this.state)
-        return (   
-        <div className="loginContainer">
-            <div className="title">
-                <h2 title="Login">Login </h2>    
+        return (
+        <div>
+            <div className="navBar">
+                <NavBar />
             </div>
-            <Form>
-                <div className="left">
-                <Form.Group className="mb-3" controlId="formBasicUsername">
-                    <Form.Label style={{color: "black"}}>Username</Form.Label>
-                    <Form.Control autoComplete="off" required type="text" placeholder="Enter username" onChange={this.onUsernameChange}/>
-                </Form.Group>
-
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label style={{color: "black"}}>Password</Form.Label>
-                    <div style={{ display: 'flex' }}>
-                        <Form.Control style={{ width: '90%' }} required type={isPasswordShown ? "text" : "password"} placeholder="Password" onChange={this.onPasswordChange}/>
-                        <span className="input-group-text" id="inputGroupPrepend2">
-                        { this.state.isPasswordShown
-                            ? <i style={{ cursor: 'pointer' }} className="fa fa-eye-slash" onClick={this.togglePasswordVisiblity}/>
-                            : <i style={{ cursor: 'pointer' }} className="fa fa-eye password-icon"  onClick={this.togglePasswordVisiblity}/>
-                        }
-                        
-                        </span>
-                    </div>
-                </Form.Group>
+            <div className="loginContainer">
+                <div className="title">
+                    <h2 title="Login">Login </h2>    
                 </div>
-                <Button variant="primary" type="button" style={{width: '100%', background: '#345cdf'}} onClick={this.loginUser}>
-                   <i className="fas fa-sign-in-alt" aria-hidden="true"/> Sign in! 
-                </Button>
-                </Form>
-            </div>
+                <Form>
+                    <div className="left">
+                    <Form.Group className="mb-3" controlId="formBasicUsername">
+                        <Form.Label style={{color: "black"}}>Username</Form.Label>
+                        <Form.Control autoComplete="off" required type="text" placeholder="Enter username" onChange={this.onUsernameChange}/>
+                    </Form.Group>
+
+                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Label style={{color: "black"}}>Password</Form.Label>
+                        <div style={{ display: 'flex' }}>
+                            <Form.Control style={{ width: '90%' }} required type={isPasswordShown ? "text" : "password"} placeholder="Password" onChange={this.onPasswordChange}/>
+                            <span className="input-group-text" id="inputGroupPrepend2">
+                            { this.state.isPasswordShown
+                                ? <i style={{ cursor: 'pointer' }} className="fa fa-eye-slash" onClick={this.togglePasswordVisiblity}/>
+                                : <i style={{ cursor: 'pointer' }} className="fa fa-eye password-icon"  onClick={this.togglePasswordVisiblity}/>
+                            }
+                            
+                            </span>
+                        </div>
+                    </Form.Group>
+                    </div>
+                    <Button variant="primary" type="button" style={{width: '100%', background: '#345cdf'}} onClick={this.loginUser}>
+                    <i className="fas fa-sign-in-alt" aria-hidden="true"/> Sign in! 
+                    </Button>
+                    </Form>
+                </div>
+            </div>   
         );
     }
 }

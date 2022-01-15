@@ -1,10 +1,10 @@
 from rest_framework import serializers
+
+from back_end.models import Course, Rating, Comment, Review, Tutorial, Category, Quiz, Question, Review
+
 from django.core.exceptions import ObjectDoesNotExist
 import logging
 logger = logging.getLogger("mylogger")
-
-
-from back_end.models import Course, Rating, Comment, Review, Tutorial, Category, Quiz
 
 
 
@@ -30,14 +30,10 @@ class CommentSerializer(serializers.ModelSerializer):
 
 class TutorialSerializer(serializers.ModelSerializer):
     comments = serializers.SerializerMethodField()
-    # rating = serializers.SerializerMethodField()
     image = serializers.SerializerMethodField()
 
     def get_image(self,t):
         return t.get_image_url()
-
-    # def get_rating(self, t):
-    #     return RatingSerializer(Rating.objects.get(tutorial_id=t.id)).data
 
     def get_comments(self, tutorial):
         try:
@@ -47,7 +43,7 @@ class TutorialSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Tutorial
-        fields = ['id', 'video', 'course', 'image', 'comments']
+        fields = ['id', 'video', 'description', 'course', 'image', 'comments']
 
 
 class CourseSerializer(serializers.ModelSerializer):
@@ -91,11 +87,12 @@ class ReviewSerializer(serializers.ModelSerializer):
 
 class QuestionSerializer(serializers.ModelSerializer):
     class Meta:
+        model = Question
         fields = ['id', 'quiz_id', 'statement', 'first_answer', 'second_answer', 'third_answer', 'correct_answer']
 
 
 class QuizSerializer(serializers.ModelSerializer):
-    questions = QuestionSerializer(source="questions")
+    questions = QuestionSerializer("questions", many = True)
 
     class Meta:
         model = Quiz

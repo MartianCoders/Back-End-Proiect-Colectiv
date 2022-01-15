@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom'
 import axios from "axios";
 import { backend_url } from "../utils/utils";
 import Sidebar from "./Sidebar";
+import './WatchCourse.css';
 
 function WatchCourse()  {
 
@@ -30,22 +31,24 @@ function WatchCourse()  {
         console.log(courseId)
         console.log(tutorials);
 
-        const tutorial = tutorials[0];
-        const video = tutorial.video;
+        // const tutorial = tutorials[0];
+        // const video = tutorial.video;
         
 
         return (
 
             <div>
-                <div>
+                <div style={{ display: "flex", justifyContent: "space-between", flexDirection: "row", flexFlow: "row wrap"}}>
                     <ReactPlayer
-                        width="1020px"
+                        className='player'
+                        width="100%"
                         height="450px"
-                        url={video}
+                        url={tutorials.length > 0 ? tutorials[0].video : ""}
                         controls
                     />
+                     <Sidebar></Sidebar>
                 </div>
-                <Sidebar></Sidebar>
+               
                 <div style={{ display: "flex", justifyContent: "flex-start", flexDirection: "row" }}>
                     <CourseOverview />
                 </div>

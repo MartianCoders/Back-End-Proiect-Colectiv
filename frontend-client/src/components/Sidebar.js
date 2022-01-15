@@ -3,7 +3,7 @@ import "../App.css"
 import {SidebarData} from './SidebarData'
 
 
-class Sidebar extends React.Component {
+class Sidebar extends React.Component<any,any> {
     
     render(){
     return (

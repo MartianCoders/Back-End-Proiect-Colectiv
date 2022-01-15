@@ -4,7 +4,8 @@ import * as ReactBootStrap from "react-bootstrap";
 import { IAppState } from '../reducers/app';
 import { connect } from 'react-redux';
 import AppActions from '../App.actions';
-// import img1 from '../images/logo-without-bg.png';
+import img1 from '../login.png';
+
 
 
 
