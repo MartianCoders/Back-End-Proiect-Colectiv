@@ -8,7 +8,7 @@ class RegisterPage extends React.Component<any,any>{
     render() {
         return(
             <div>
-                <NavBar parent="register"/>
+                <NavBar parent="register" navigate={this.props.navigate}/>
                 <RegisterForm navigate={this.props.navigate}/>
             </div>
         )

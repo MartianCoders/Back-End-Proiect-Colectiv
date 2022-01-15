@@ -65,8 +65,8 @@ class LoginPage extends React.Component<any,any> {
                 <NavBar />
             </div>
             <div className="loginContainer">
-                <div className="title">
-                    <h2 title="Login">Login </h2>    
+                <div className="title-login">
+                    <h2 title="Login" className="h2">Login </h2>    
                 </div>
                 <Form>
                     <div className="left">
@@ -91,6 +91,9 @@ class LoginPage extends React.Component<any,any> {
                     </div>
                     <Button variant="primary" type="button" style={{width: '100%', background: '#345cdf'}} onClick={this.loginUser}>
                     <i className="fas fa-sign-in-alt" aria-hidden="true"/> Sign in! 
+                    </Button>
+                    <Button variant="secondary" type="button" style={{width: '100%', background: '#345cdf' ,marginTop:4}} onClick={this.registerUser}>
+                    <i className="fas fa-sign-in-alt" aria-hidden="true"/> Register 
                     </Button>
                     </Form>
                 </div>

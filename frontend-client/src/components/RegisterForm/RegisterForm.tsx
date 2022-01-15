@@ -4,6 +4,7 @@ import { IAppState } from '../../reducers/app';
 import { connect } from 'react-redux';
 import AppActions from '../../App.actions';
 import './RegisterForm.css';
+import '../../style-login.css'
 
 class RegisterForm extends React.Component<any,any>{
   constructor(props:any){
@@ -62,10 +63,10 @@ class RegisterForm extends React.Component<any,any>{
   render() {
     console.log(this.state)
     return <>
-      <form className="loginContainer register-form"
+      <form className="loginContainer"
         onSubmit={this.onSubmit}>
-        <div className="title">
-          <h2 title="signup">signup</h2>
+        <div className="title-login">
+          <h2 title="Register" className="h2">Register</h2>
         </div>
         <div className="form-group">
           <label>Username</label>

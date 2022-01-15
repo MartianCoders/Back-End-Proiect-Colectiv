@@ -24,7 +24,7 @@
     position: absolute;
 }
 
-input {
+.input {
     display: none;
 }
 
@@ -35,7 +35,7 @@ input {
     height: 100px;
 }
 
-label {
+.label {
     cursor: pointer;
     width: 45px;
     font-size: 1.9rem;
@@ -44,7 +44,7 @@ label {
     transition: .6s;
 }
 
-h4 {
+.h4 {
     font-family: cursive;
     color: white;
     font-size: 16px;
@@ -57,9 +57,9 @@ h4 {
     transition: all .5s ease;
 }
 
-input:checked~ label,
-input:not(:checked)~label:hover,
-input:not(:checked)~label:hover~label {
+.input:checked~ label,
+.input:not(:checked)~label:hover,
+.input:not(:checked)~label:hover~label {
     color:yellow;
 }
 

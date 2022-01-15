@@ -12,7 +12,7 @@ class MyCoursesPage extends React.Component<any,any> {
           <div className="main">
               <NavBar parent="my-courses" navigate={this.props.navigate}/>
               <p className="styleText">My Courses</p>
-              <MyCoursesList />
+              <MyCoursesList navigate={this.props.navigate}/>
           </div>
       </div>
       

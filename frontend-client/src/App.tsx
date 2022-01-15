@@ -36,7 +36,7 @@ function App () {
         <Route path='/register' element={<RegisterPage navigate={navigate}/>}></Route>
         <Route path='/' element={<Navigate to="/login"/>}></Route>
         <Route path='/watch-course' element={<WatchCourse />}></Route>
-        <Route path='/addcourse' element={<AddCoursePage />}></Route>
+        <Route path='/add-course' element={<AddCoursePage navigate={navigate}/>}></Route>
         <Route path='/watch-course/:courseId' element={<WatchCourse />}></Route>
         <Route path='/my-courses' element={<MyCoursesPage navigate={navigate}/>}></Route>
       </Routes>

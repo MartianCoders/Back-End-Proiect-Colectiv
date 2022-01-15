@@ -26,6 +26,15 @@ class NavBar extends React.Component<any,any> {
     this.props.navigate("/my-courses", { replace: true })
   }
 
+  handleLoginLink = (e:any) => {
+    e.preventDefault();
+    this.props.navigate("/login", { replace: true })
+  }
+
+  handleHome = (e:any) => {
+    e.preventDefault();
+    this.props.navigate("/home", { replace: true })
+  }
 
   render() {
     return(
@@ -33,7 +42,7 @@ class NavBar extends React.Component<any,any> {
               <ReactBootStrap.Navbar  expand={false}>
               <ReactBootStrap.Container fluid>
              
-                <ReactBootStrap.Navbar.Brand href="#home" className='ms-5'>
+                <ReactBootStrap.Navbar.Brand href="#home" className='ms-5'style={{display:"flex",flexDirection:"row"}}>
                   <img
                         alt=""
                         src="se.png"
@@ -41,10 +50,9 @@ class NavBar extends React.Component<any,any> {
                         height="80"
                         
                       />
-                  <>
-                    Home
-                  </>
+                  <ReactBootStrap.Nav.Link style={{marginTop:20}} onClick={this.handleHome}>Home</ReactBootStrap.Nav.Link>
                 </ReactBootStrap.Navbar.Brand>
+                
               
             
               <ReactBootStrap.Navbar.Toggle aria-controls="offcanvasNavbar" className="me-5"/>
@@ -59,7 +67,7 @@ class NavBar extends React.Component<any,any> {
                 <ReactBootStrap.Offcanvas.Body>
                   <ReactBootStrap.Nav className="justify-content-end flex-grow-1 pe-3">
                     {
-                      this.props.parent === "home" || this.props.parent ==="my-courses" ? 
+                      this.props.parent === "home" || this.props.parent ==="my-courses" || this.props.parent === "add-course"? 
                         <div>
                           <ReactBootStrap.Nav.Link >Profile</ReactBootStrap.Nav.Link>
                           <ReactBootStrap.Nav.Link onClick={this.handleMyCourses}>My courses</ReactBootStrap.Nav.Link>
@@ -67,7 +75,7 @@ class NavBar extends React.Component<any,any> {
                         </div>
                         : (this.props.parent === "register" ?
                           <div>
-                            <ReactBootStrap.Nav.Link >Login</ReactBootStrap.Nav.Link>
+                            <ReactBootStrap.Nav.Link onClick={this.handleLoginLink}>Login</ReactBootStrap.Nav.Link>
                           </div>
                         : "")
                     }

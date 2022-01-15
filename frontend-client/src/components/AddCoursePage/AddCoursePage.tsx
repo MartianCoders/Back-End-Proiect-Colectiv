@@ -6,6 +6,8 @@ import CourseInfo from './CourseInfo';
 import Tutorials from './Tutorials';
 import Quiz from './Quiz';
 import StepZilla from 'react-stepzilla';
+import axios from 'axios';
+import { backend_url } from '../../utils/utils';
 
 interface IAddCourseProps {}
 
@@ -14,9 +16,9 @@ interface IAddCourseState {
     step2: { formValues: Array<any>}
 }
 
-export default class AddCoursePage extends Component<IAddCourseProps, IAddCourseState> {
-    state: IAddCourseState = {
-        step1: { title: "", category: "", images: "", description: "" },
+export default class AddCoursePage extends Component<any, any> {
+    state = {
+        step1: { title: "", category: "", image: "", description: "" },
         step2: { formValues: [{title: "", video: ""}]}
     };
 
@@ -28,8 +30,34 @@ export default class AddCoursePage extends Component<IAddCourseProps, IAddCourse
         console.log(this.state);
     }
 
-    addCourseOnLastStep(step: number) {
-        if(step === 2){
+    addCourseOnLastStep = (step: number) => {
+        if(step === 1){
+            const {title,category,image,description} = this.state.step1;
+
+            const imageUrl = image.replace("blob:","");
+            console.log(imageUrl);
+
+            const course = {
+                title,
+                category,
+                description,
+                imageUrl
+            }
+
+            const headers = {
+                'Authorization': `Token ${localStorage.getItem('token')}`
+            }
+
+            console.log(this.state , localStorage.getItem('token'));
+
+            axios.post(`${backend_url}/courses/create`,course,{
+                headers:headers
+            })
+            .then((response)=>{})
+            .catch((err) => {
+                console.log(err);
+            })
+        }else if(step === 2){
             console.log(this.state);
         }
     }
@@ -45,7 +73,7 @@ export default class AddCoursePage extends Component<IAddCourseProps, IAddCourse
 
         return (
             <div className='step-wrapper'>
-                <NavBar />
+                <NavBar parent="add-course" navigate={this.props.navigate}/>
                 <div className='step-progress'>
                     <StepZilla steps={steps} prevBtnOnLastStep={false} stepsNavigation={false} onStepChange={(step) => this.addCourseOnLastStep(step)} />
                 </div>
