@@ -1,6 +1,4 @@
 from django.db import models
-from django.db.models.fields import CommaSeparatedIntegerField
-
 from django_proiect_colectiv.settings import CLOUDINARY_STORAGE
 from cloudinary.models import CloudinaryField
 from django_proiect_colectiv import settings
@@ -38,18 +36,16 @@ class Course(models.Model):
 
 class Tutorial(models.Model):
     video = models.FileField(upload_to='videos/')
-    #video=CloudinaryField('video')
-    #categoryID = models.IntegerField()
+    description = models.CharField(max_length=256)
     title = models.CharField(max_length=256)
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='tutorials')
-    #image = models.ImageField(upload_to='images/')
     image=CloudinaryField('image')
 
     def __str__(self):
-        return 'Tutorial: {} {} {} {}'.format(
+        return 'Tutorial: {} {} {} {} {}'.format(
             self.id,
             self.video,
-            #self.categoryID,
+            self.description,
             self.title,
             self.image
             )
@@ -103,6 +99,9 @@ class Review(models.Model):
 class Quiz(models.Model):
     user_id = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="quizzes", on_delete=models.CASCADE)
 
+    def __str__(self):
+            return '{}'.format(self.user_id.username)
+
     class Meta:
         verbose_name_plural = "Quizzes"
 
@@ -115,6 +114,8 @@ class Question(models.Model):
     third_answer = models.CharField(max_length=100)
     correct_answer = models.IntegerField()
 
+    def __str__(self):
+        return '{}, {}, {}, {}, {}'.format(self.statement, self.first_answer, self.second_answer, self.third_answer, self.correct_answer)
+
     class Meta:
         unique_together = ('quiz_id', 'statement')
-

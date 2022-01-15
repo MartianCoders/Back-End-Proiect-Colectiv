@@ -63,9 +63,6 @@ class MyCourses(APIView):
 
 
 class AddCourseView(APIView):
-    permission_classes = [
-        permissions.IsAuthenticated,
-    ]
 
     def post(self, request, *args, **kwargs):
         user = request.user
