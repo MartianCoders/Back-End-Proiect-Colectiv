@@ -30,14 +30,10 @@ class CommentSerializer(serializers.ModelSerializer):
 
 class TutorialSerializer(serializers.ModelSerializer):
     comments = serializers.SerializerMethodField()
-    # rating = serializers.SerializerMethodField()
     image = serializers.SerializerMethodField()
 
     def get_image(self,t):
         return t.get_image_url()
-
-    # def get_rating(self, t):
-    #     return RatingSerializer(Rating.objects.get(tutorial_id=t.id)).data
 
     def get_comments(self, tutorial):
         try:
@@ -47,7 +43,7 @@ class TutorialSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Tutorial
-        fields = ['id', 'video', 'course', 'image', 'comments']
+        fields = ['id', 'video', 'description', 'course', 'image', 'comments']
 
 
 class CourseSerializer(serializers.ModelSerializer):
