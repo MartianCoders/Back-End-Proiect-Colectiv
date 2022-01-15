@@ -1,6 +1,6 @@
 import React from 'react';
 import 'react-bootstrap';
-import './RegisterPage.css';
+import './RegisterForm.css';
 
 class RegisterForm extends React.Component{
   
