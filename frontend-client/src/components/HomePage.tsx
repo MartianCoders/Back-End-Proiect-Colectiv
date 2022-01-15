@@ -13,7 +13,7 @@ class HomePage extends React.Component<any,any> {
           </div>
           <div className="main">
               <NavBar navigate={this.props.navigate} parent="home"/>
-              <HomeContent />
+              <HomeContent navigate={this.props.navigate}/>
           </div>
       </div>
       

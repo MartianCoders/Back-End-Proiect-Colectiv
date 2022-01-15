@@ -3,7 +3,7 @@
     flex-direction: column;
     width: 240px;
     text-align: left;
-    margin-bottom: 2%;
+    margin-bottom: 1%;
   }
   
   .courseCard .courseImg {
@@ -29,6 +29,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-left:40%;
   }
   
   .courseCard .rating {
@@ -61,6 +62,7 @@
       font-size: 0.8rem;
       cursor: pointer;
       width: 120px;
+      margin-top: -20%;
   }
 
   .joinBtn:hover{

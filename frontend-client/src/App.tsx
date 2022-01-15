@@ -12,6 +12,7 @@ import {Route,Routes,Navigate} from 'react-router-dom';
 import LoginPage from './components/LoginPage';
 import { useNavigate } from 'react-router-dom';
 import RegisterPage from './components/RegisterPage';
+import WatchCourse from './components/WatchCourse';
 
 function App () {
   
@@ -33,6 +34,7 @@ function App () {
         <Route path='/register' element={<RegisterPage navigate={navigate}/>}></Route>
         <Route path='/' element={<Navigate to="/login"/>}></Route>
         <Route path='/addcourse' element={<AddCoursePage />}></Route>
+        <Route path='/watch-course/:courseId' element={<WatchCourse />}></Route>
       </Routes>
     </div>
     );

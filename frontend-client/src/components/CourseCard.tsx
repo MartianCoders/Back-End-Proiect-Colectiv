@@ -14,6 +14,10 @@ interface ICourseState{
 }
 
 export default class CourseCard extends Component<any, any> {
+    onJoinButton = () => {
+        this.props.navigate(`/watch-course/${this.props.courseId}`, { replace: true });
+    }
+
     render() : JSX.Element {
         const {courseTitle, imgSrc, videos, rating} = this.props;
         return (
@@ -34,7 +38,7 @@ export default class CourseCard extends Component<any, any> {
                     </div>
                 </div>
 
-            <Button className="joinBtn">Start course</Button>
+            <Button className="joinBtn" onClick={this.onJoinButton}>Start course</Button>
             </div>
         )
     }

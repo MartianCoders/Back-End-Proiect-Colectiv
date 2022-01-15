@@ -34,7 +34,7 @@ class Videos extends React.Component<any,any> {
             <div className='recommendedVideos'>
                 {
                     this.state.courses.map((course:any) => {
-                        return <CourseCard courseTitle={course.title} imgSrc={course.image} videos={course.tutorials.length} rating={course.rating.starsAverage ? course.rating.starsAverage : 0}/>
+                        return <CourseCard courseTitle={course.title} imgSrc={course.image} videos={course.tutorials.length} rating={course.rating.starsAverage ? course.rating.starsAverage : 0} courseId={course.id} navigate={this.props.navigate}/>
                     })
                 }
             </div>

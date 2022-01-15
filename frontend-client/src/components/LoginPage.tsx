@@ -64,12 +64,12 @@ class LoginPage extends React.Component<any,any> {
             <Form>
                 <div className="left">
                 <Form.Group className="mb-3" controlId="formBasicUsername">
-                    <Form.Label>Username</Form.Label>
+                    <Form.Label style={{color: "black"}}>Username</Form.Label>
                     <Form.Control autoComplete="off" required type="text" placeholder="Enter username" onChange={this.onUsernameChange}/>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
+                    <Form.Label style={{color: "black"}}>Password</Form.Label>
                     <div style={{ display: 'flex' }}>
                         <Form.Control style={{ width: '90%' }} required type={isPasswordShown ? "text" : "password"} placeholder="Password" onChange={this.onPasswordChange}/>
                         <span className="input-group-text" id="inputGroupPrepend2">
