@@ -1,0 +1,75 @@
+.add-quiz-header{
+    grid-area: header;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 10px 0;
+    font: 600 28px "Trebuchet MS";
+}
+
+.main-content{
+    margin: 4em auto;
+    max-width: 950px;
+    background: #fff;
+    padding: 15px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.75);
+    text-transform: uppercase;
+    transition: all 0.1s ease-in-out;
+}
+
+.form-inline-quiz{
+    display: flex;
+    width: 50%;
+    height: 350px;
+    transition: width 0.2s ease-in-out;
+    margin: auto;
+    grid-gap: 15px;
+    padding: 15px;
+    background: rgba(76, 162, 205, 0.2);
+    border: 2px solid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(2, auto);
+    grid-template-areas: "question question" "answer answer";
+}
+
+.button-add{
+    background-color: rgb(114, 185, 100);
+    color: white;
+}
+
+.button-remove{
+    background-color: rgb(220, 20, 60);
+    color: white;
+}
+
+input.question-quiz{
+    font: 400 20px "Trebuchet MS";
+    border: none;
+    padding: 10px;
+    height: 40px;
+    width: 100%;
+    border-bottom: 2px solid;
+    resize: none;
+    overflow: visible;
+    line-height: 1;
+}
+
+input.answer-quiz{
+    font: 350 20px "Trebuchet MS";
+    border: none;
+    padding: 10px;
+    height: 40px;
+    width: 100%;
+    border-bottom: 2px solid;
+    resize: none;
+    overflow: visible;
+    line-height: 1;
+}
+
+.question{
+    height: 80px;
+    width: 450px;
+    flex-flow: row;
+    justify-content: center;
+    padding: 10px;
+}
+

@@ -1,10 +1,9 @@
 import React from 'react';
 import 'react-bootstrap';
-import './style.css';
-import '../../style-login.css';
 import { IAppState } from '../../reducers/app';
 import { connect } from 'react-redux';
 import AppActions from '../../App.actions';
+import './RegisterForm.css';
 
 class RegisterForm extends React.Component<any,any>{
   constructor(props:any){

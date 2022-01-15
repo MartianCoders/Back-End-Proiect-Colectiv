@@ -51,11 +51,14 @@ class LoginPage extends React.Component<any,any> {
         
     }
 
+    registerUser = () => {
+        this.props.navigate("/register");
+    }
+
     render() {
         if(this.props.appState.isLoggedIn) this.props.navigate("/home", { replace: true });
         const { isPasswordShown } = this.state;
-        // console.log(this.props)
-        // console.log(this.state)
+
         return (
         <div>
             <div className="navBar">
