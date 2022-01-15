@@ -25,6 +25,10 @@ class LoginPage extends React.Component<any,any> {
         this.props.navigate("/home", { replace: true });
     }
 
+    registerUser = () => {
+        this.props.navigate("/register");
+    }
+
     render() {
         const { isPasswordShown } = this.state;
         return ( 

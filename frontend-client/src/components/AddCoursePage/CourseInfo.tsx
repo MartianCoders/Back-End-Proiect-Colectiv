@@ -5,9 +5,7 @@ interface ICourseProps {
     isActive: boolean;
     title: string;
     images: string;
-    tutor: string;
     category: string;
-    videos: number;
     description: string;
     saveData: Function;
 }
@@ -16,9 +14,7 @@ interface ICourseState {
     isActive: boolean;
     images: string;
     title: string;
-    tutor: string;
     category: string;
-    videos: number;
     description: string;
 }
 
@@ -27,20 +23,16 @@ export default class CourseInfo extends Component<ICourseProps, ICourseState> {
         isActive: this.props.isActive,
         images: "",
         title: "",
-        tutor: "",
         category: "",
         description: "",
-        videos: 0,
     };
 
 
     componentDidMount(){
         this.setState({
             title: this.props.title,
-            tutor: this.props.tutor,
             category: this.props.category,
             images: this.props.images,
-            videos: this.props.videos,
             description: this.props.description
         });
     }
@@ -48,10 +40,8 @@ export default class CourseInfo extends Component<ICourseProps, ICourseState> {
     componentWillUnmount(){
         this.props.saveData(1, { 
             title: this.state.title,
-            tutor: this.state.tutor,
             category: this.state.category,
             images: this.state.images,
-            videos: this.state.videos,
             description: this.state.description
         })
     }
@@ -90,17 +80,9 @@ export default class CourseInfo extends Component<ICourseProps, ICourseState> {
                             <label>Course Name</label>
                             <textarea value={this.state.title} onChange={this.handleChange("title")} className="full"></textarea>
                         </div>
-                        <div className="tutor">
-                            <label>Tutor Name</label>
-                            <input value={this.state.tutor} onChange={this.handleChange("tutor")} className="full"/>
-                        </div>
                         <div className="category">
                             <label>Category</label>
                             <input value={this.state.category} onChange={this.handleChange("category")} className="full"/>
-                        </div>
-                        <div className="videos">
-                            <label>Videos</label>
-                            <input value={this.state.videos === 0 ? "" : this.state.videos} onChange={this.handleChange("videos")} className="full"/>
                         </div>
                         <div className="description">
                             <label>Short Description</label>
