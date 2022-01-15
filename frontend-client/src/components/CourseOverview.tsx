@@ -1,6 +1,8 @@
 import React, { Component, useState } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import SearchIcon from '@mui/icons-material/Search';
+import Review from "./Review";
+
 
 interface OverviewState {
     bar : number;
@@ -42,9 +44,13 @@ class CourseOverview extends Component<OverviewStateProps, OverviewState>{
                         </Container>
 
                     </Navbar>
-                    <div>
-                        {this.state.bar == 1 ? <div style={{ display: "flex", justifyContent: "flex-start", flexDirection: "row" }}>
-                            This is an overview.
+                    <div style={{ marginLeft: "10px"}}>
+                        {this.state.bar == 1 ? <div style={{ display: "flex", justifyContent: "flex-start", flexDirection: "column" }}>
+                            <div style={{ textAlign: "left"}}>
+                                This is an overview.
+                            </div>
+                            <Review />
+                            
                         </div> : this.state.bar == 2 ? <div style={{ display: "flex", justifyContent: "flex-start", flexDirection: "row" }}>
                             Add questions.
                         </div> : this.state.bar == 3 ? <div style={{ display: "flex", justifyContent: "flex-start", flexDirection: "row" }}>
