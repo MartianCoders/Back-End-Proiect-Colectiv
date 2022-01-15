@@ -9,7 +9,7 @@ class MyCoursesList extends React.Component {
       <div className="coursesDiv">
         <div className="courses">
         <button type="button" className="btn btn-dark" style={{fontSize:'20px', borderRadius:'10px', display:'flex',margin:'0 auto 30px'}}><AddCircleRoundedIcon />  Add course</button>
-          <Videos />
+          <Videos parent="my-courses"/>
         </div>
       </div>
     );

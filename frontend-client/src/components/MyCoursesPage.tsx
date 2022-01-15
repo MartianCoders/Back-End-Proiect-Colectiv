@@ -5,17 +5,20 @@ import MyCoursesList from "./MyCoursesList";
 import './HomePage.css';
 import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
 
-function MyCoursesPage() {
-  return (
-    <div className="homePage">
-        <div className="main">
-            <NavBar />
-            <p className="styleText">My Courses</p>
-            <MyCoursesList />
-        </div>
-    </div>
-    
-  );
+class MyCoursesPage extends React.Component<any,any> {
+  render() {
+    return (
+      <div className="homePage">
+          <div className="main">
+              <NavBar parent="my-courses" navigate={this.props.navigate}/>
+              <p className="styleText">My Courses</p>
+              <MyCoursesList />
+          </div>
+      </div>
+      
+    );
+  }
+  
 }
 
 export default MyCoursesPage;

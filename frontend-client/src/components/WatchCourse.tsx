@@ -11,28 +11,35 @@ function WatchCourse()  {
 
         const {courseId} = useParams()
         const [tutorials,setTutorials] = useState<any[]>([]);
+        const [video,setVideo] = useState("");
+        const [currentCourse,setCurrentCourse] = useState({})
 
         useEffect(() => {
             fetchTutorials();
+            fetchCourse();
         }, [])
 
-        const fetchTutorials = async() => {
+        const fetchTutorials = () => {
             axios.get(`${backend_url}/courses/${courseId}/tutorials`)
             .then((response)=>{
-                // console.log(response);
                 setTutorials(response.data)
             })
             .catch((err) => {
                 alert(err);
             })
         };
+
+        const fetchCourse = () => {
+            axios.get(`${backend_url}/courses/${courseId}`)
+            .then((response)=>{
+                setCurrentCourse(response.data)
+            })
+            .catch((err) => {
+                alert(err);
+            })
+        };
         
-
-        console.log(courseId)
-        console.log(tutorials);
-
-        // const tutorial = tutorials[0];
-        // const video = tutorial.video;
+        console.log(currentCourse);
         
 
         return (
@@ -43,14 +50,14 @@ function WatchCourse()  {
                         className='player'
                         width="100%"
                         height="450px"
-                        url={tutorials.length > 0 ? tutorials[0].video : ""}
+                        url={video}
                         controls
                     />
-                     <Sidebar></Sidebar>
+                     <Sidebar courseId={courseId} setVideo={setVideo}></Sidebar>
                 </div>
                
                 <div style={{ display: "flex", justifyContent: "flex-start", flexDirection: "row" }}>
-                    <CourseOverview />
+                    <CourseOverview course={currentCourse}/>
                 </div>
             </div>
         );

@@ -68,12 +68,12 @@ class LoginPage extends React.Component<any,any> {
                 <Form>
                     <div className="left">
                     <Form.Group className="mb-3" controlId="formBasicUsername">
-                        <Form.Label style={{color: "black"}}>Username</Form.Label>
+                        <Form.Label style={{color: "black",fontSize:20}}>Username</Form.Label>
                         <Form.Control autoComplete="off" required type="text" placeholder="Enter username" onChange={this.onUsernameChange}/>
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <Form.Label style={{color: "black"}}>Password</Form.Label>
+                        <Form.Label style={{color: "black",fontSize:20}}>Password</Form.Label>
                         <div style={{ display: 'flex' }}>
                             <Form.Control style={{ width: '90%' }} required type={isPasswordShown ? "text" : "password"} placeholder="Password" onChange={this.onPasswordChange}/>
                             <span className="input-group-text" id="inputGroupPrepend2">

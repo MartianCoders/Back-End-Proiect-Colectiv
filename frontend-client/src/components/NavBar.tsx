@@ -21,6 +21,11 @@ class NavBar extends React.Component<any,any> {
     this.props.navigate("/login", { replace: true })
   }
 
+  handleMyCourses = (e:any) => {
+    e.preventDefault();
+    this.props.navigate("/my-courses", { replace: true })
+  }
+
 
   render() {
     return(
@@ -54,10 +59,10 @@ class NavBar extends React.Component<any,any> {
                 <ReactBootStrap.Offcanvas.Body>
                   <ReactBootStrap.Nav className="justify-content-end flex-grow-1 pe-3">
                     {
-                      this.props.parent === "home" ? 
+                      this.props.parent === "home" || this.props.parent ==="my-courses" ? 
                         <div>
                           <ReactBootStrap.Nav.Link >Profile</ReactBootStrap.Nav.Link>
-                          <ReactBootStrap.Nav.Link >My courses</ReactBootStrap.Nav.Link>
+                          <ReactBootStrap.Nav.Link onClick={this.handleMyCourses}>My courses</ReactBootStrap.Nav.Link>
                           <ReactBootStrap.Nav.Link onClick={this.handleLogout}>Sign out</ReactBootStrap.Nav.Link>
                         </div>
                         : (this.props.parent === "register" ?

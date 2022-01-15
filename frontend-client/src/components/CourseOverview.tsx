@@ -12,7 +12,7 @@ interface OverviewState {
 type OverviewStateProps ={
 }
 
-class CourseOverview extends Component<OverviewStateProps, OverviewState>{
+class CourseOverview extends Component<any, any>{
     state: OverviewState = {
         bar : 1,
     }
@@ -39,8 +39,9 @@ class CourseOverview extends Component<OverviewStateProps, OverviewState>{
                     </Navbar>
                     <div style={{ marginLeft: "10px"}}>
                         {this.state.bar == 1 ? <div style={{ display: "flex", justifyContent: "flex-start", flexDirection: "column" }}>
+                            <h3 style={{textAlign: "left"}}>{this.props.course.title}</h3>
                             <div style={{ textAlign: "left"}}>
-                                This is an overview.
+                                {this.props.course.description}
                             </div>
                             <Review />
                             
