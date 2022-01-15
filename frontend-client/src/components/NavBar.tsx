@@ -1,16 +1,48 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css'
 import * as ReactBootStrap from "react-bootstrap";
+import { IAppState } from '../reducers/app';
+import { connect } from 'react-redux';
+import AppActions from '../App.actions';
 import img1 from '../login.png';
 
 
-const NavBar = () => {
+
+
+class NavBar extends React.Component<any,any> {
+  constructor(props:any){
+    super(props);
+  }
+
+  handleLogout = (e:any) => {
+    e.preventDefault();
+    AppActions.logout(this.props.dispatch)
+    localStorage.clear();
+    this.props.navigate("/login", { replace: true })
+  }
+
+  handleMyCourses = (e:any) => {
+    e.preventDefault();
+    this.props.navigate("/my-courses", { replace: true })
+  }
+
+  handleLoginLink = (e:any) => {
+    e.preventDefault();
+    this.props.navigate("/login", { replace: true })
+  }
+
+  handleHome = (e:any) => {
+    e.preventDefault();
+    this.props.navigate("/home", { replace: true })
+  }
+
+  render() {
     return(
         <div className="App" >
               <ReactBootStrap.Navbar  expand={false}>
               <ReactBootStrap.Container fluid>
              
-                <ReactBootStrap.Navbar.Brand href="#home" className='ms-5'>
+                <ReactBootStrap.Navbar.Brand href="#home" className='ms-5'style={{display:"flex",flexDirection:"row"}}>
                   <img
                         alt=""
                         src="se.png"
@@ -18,10 +50,9 @@ const NavBar = () => {
                         height="80"
                         
                       />
-                  <>
-                    Home
-                  </>
+                  <ReactBootStrap.Nav.Link style={{marginTop:20}} onClick={this.handleHome}>Home</ReactBootStrap.Nav.Link>
                 </ReactBootStrap.Navbar.Brand>
+                
               
             
               <ReactBootStrap.Navbar.Toggle aria-controls="offcanvasNavbar" className="me-5"/>
@@ -35,9 +66,19 @@ const NavBar = () => {
                 </ReactBootStrap.Offcanvas.Header>
                 <ReactBootStrap.Offcanvas.Body>
                   <ReactBootStrap.Nav className="justify-content-end flex-grow-1 pe-3">
-                    <ReactBootStrap.Nav.Link href="#action1">Profile</ReactBootStrap.Nav.Link>
-                    <ReactBootStrap.Nav.Link href="#action2">My courses</ReactBootStrap.Nav.Link>
-                    <ReactBootStrap.Nav.Link href="#action3">Sign out</ReactBootStrap.Nav.Link>
+                    {
+                      this.props.parent === "home" || this.props.parent ==="my-courses" || this.props.parent === "add-course"? 
+                        <div>
+                          <ReactBootStrap.Nav.Link >Profile</ReactBootStrap.Nav.Link>
+                          <ReactBootStrap.Nav.Link onClick={this.handleMyCourses}>My courses</ReactBootStrap.Nav.Link>
+                          <ReactBootStrap.Nav.Link onClick={this.handleLogout}>Sign out</ReactBootStrap.Nav.Link>
+                        </div>
+                        : (this.props.parent === "register" ?
+                          <div>
+                            <ReactBootStrap.Nav.Link onClick={this.handleLoginLink}>Login</ReactBootStrap.Nav.Link>
+                          </div>
+                        : "")
+                    }
                   </ReactBootStrap.Nav>
                 </ReactBootStrap.Offcanvas.Body>
               </ReactBootStrap.Navbar.Offcanvas>
@@ -45,6 +86,18 @@ const NavBar = () => {
           </ReactBootStrap.Navbar>
         </div>
     )
+  }
 }
 
-export default NavBar;
+const mapStateToProps = (state:any) => {
+  const appState: IAppState = state.app;
+
+  const appProps:any ={
+      appState,
+      reduxState:state,
+  };
+  
+  return appProps;
+}
+
+export default connect<any,any,any>(mapStateToProps)(NavBar);

@@ -1,12 +1,46 @@
-import React, { Component, useState } from "react";
+import React, { Component, useEffect, useState } from "react";
 import ReactPlayer from 'react-player/lazy'
 import CourseOverview from "./CourseOverview";
+import { useParams } from 'react-router-dom'
+import axios from "axios";
+import { backend_url } from "../utils/utils";
 import Sidebar from "./Sidebar";
 import './WatchCourse.css';
 
+function WatchCourse()  {
 
-class WatchCourse extends Component {
-    render() {
+        const {courseId} = useParams()
+        const [tutorials,setTutorials] = useState<any[]>([]);
+        const [video,setVideo] = useState("");
+        const [currentCourse,setCurrentCourse] = useState({})
+
+        useEffect(() => {
+            fetchTutorials();
+            fetchCourse();
+        }, [])
+
+        const fetchTutorials = () => {
+            axios.get(`${backend_url}/courses/${courseId}/tutorials`)
+            .then((response)=>{
+                setTutorials(response.data)
+            })
+            .catch((err) => {
+                alert(err);
+            })
+        };
+
+        const fetchCourse = () => {
+            axios.get(`${backend_url}/courses/${courseId}`)
+            .then((response)=>{
+                setCurrentCourse(response.data)
+            })
+            .catch((err) => {
+                alert(err);
+            })
+        };
+        
+        console.log(currentCourse);
+        
 
         return (
 
@@ -16,17 +50,16 @@ class WatchCourse extends Component {
                         className='player'
                         width="100%"
                         height="450px"
-                        url='https://www.youtube.com/watch?v=Y-OLcnr8eNo&ab_channel=VivekJoy'
+                        url={video}
                         controls
                     />
-                    <Sidebar>
-
-                    </Sidebar>
-                    <div style={{ display: "flex", justifyContent: "flex-start", flexDirection: "row" }}>
-                        <CourseOverview />
-                    </div>
+                     <Sidebar courseId={courseId} setVideo={setVideo}></Sidebar>
+                </div>
+               
+                <div style={{ display: "flex", justifyContent: "flex-start", flexDirection: "row" }}>
+                    <CourseOverview course={currentCourse}/>
                 </div>
             </div>
         );
-    }
+    
 }; export default WatchCourse;

@@ -1,42 +1,72 @@
 import React from 'react';
 import 'react-bootstrap';
+import { IAppState } from '../../reducers/app';
+import { connect } from 'react-redux';
+import AppActions from '../../App.actions';
 import './RegisterForm.css';
+import '../../style-login.css'
 
-class RegisterForm extends React.Component{
-  
-  onSubmit(e: React.SyntheticEvent){
-    e.preventDefault();
-        const target = e.target as typeof e.target & {
-          name: { value: string}
-          username: { value: string}
-          email: { value: string };
-          password: { value: string };
-          confirmed_password: {value: string};
-        };
-        const name = target.name.value;
-        const username = target.username.value;
-        const email = target.email.value; 
-        const password = target.password.value;
-        const confirmed_password = target.confirmed_password.value; 
-        if (password === confirmed_password) console.log(email, username,password,name)
-        //@TODO: add BE route
-        else alert("Passwords don't match");
+class RegisterForm extends React.Component<any,any>{
+  constructor(props:any){
+    super(props);
+    this.state = {
+      username: "",
+      email: "",
+      password: "",
+      passwordConfirmation: "",
+    }
   }
+
+  onUsernameChange = (event:any) => {
+    const username = event.target.value;
+    this.setState({username});
+  }
+
+  onEmailChange = (event:any) => {
+    const email = event.target.value;
+    this.setState({email});
+  }
+
+  onPasswordChange = (event:any) => {
+    const password = event.target.value;
+    this.setState({password});
+  }
+
+  onPasswordConfirmationChange = (event:any) => {
+    const passwordConfirmation = event.target.value;
+    this.setState({passwordConfirmation});
+  }
+  
+  onSubmit = (e: any) => {
+    e.preventDefault();
+    if(this.state.password === this.state.passwordConfirmation && (this.state.password.length > 0 && this.state.passwordConfirmation.length > 0)){
+      const user = {
+        username: this.state.username,
+        email: this.state.email,
+        password: this.state.password,
+        category: 2
+      }
+
+    AppActions.register(user)(this.props.dispatch)
+
+    setTimeout(() => {
+      if(this.props.appState.isLoggedIn) this.props.navigate("/home", { replace: true });
+    },500);
+       
+
+    }
+    else{
+      alert("Passwords must match !")
+    }
+  }
+
   render() {
+    console.log(this.state)
     return <>
-      <form className="loginContainer register-form"
+      <form className="loginContainer"
         onSubmit={this.onSubmit}>
-        <div className="title">
-          <h2 title="signup">signup</h2>
-        </div>
-        <div className="form-group">
-          <label>Name</label>
-          <input 
-            type="text" 
-            name="name" 
-            className="form-control" 
-            placeholder="Name" 
-          />
+        <div className="title-login">
+          <h2 title="Register" className="h2">Register</h2>
         </div>
         <div className="form-group">
           <label>Username</label>
@@ -45,6 +75,7 @@ class RegisterForm extends React.Component{
             name="username" 
             className="form-control" 
             placeholder="Username" 
+            onChange={this.onUsernameChange}
           />
         </div>
         <div className="form-group">
@@ -54,6 +85,7 @@ class RegisterForm extends React.Component{
             name="email" 
             className="form-control" 
             placeholder="Enter email" 
+            onChange={this.onEmailChange}
           />
         </div>
         <div className="form-group">
@@ -62,7 +94,8 @@ class RegisterForm extends React.Component{
             type="password" 
             name="password" 
             className="form-control" 
-            placeholder="Enter password" 
+            placeholder="Enter password"
+            onChange={this.onPasswordChange}
           />
         </div>
         <div className="form-group">
@@ -72,6 +105,7 @@ class RegisterForm extends React.Component{
             name="confirmed_password" 
             className="form-control" 
             placeholder="Confirm password" 
+            onChange={this.onPasswordConfirmationChange}
           />
         </div>
         <button 
@@ -86,4 +120,15 @@ class RegisterForm extends React.Component{
     }
 }
 
-export default RegisterForm;
+const mapStateToProps = (state:any) => {
+  const appState: IAppState = state.app;
+
+  const appProps:any ={
+      appState,
+      reduxState:state,
+  };
+  
+  return appProps;
+}
+
+export default connect<any,any,any>(mapStateToProps)(RegisterForm);

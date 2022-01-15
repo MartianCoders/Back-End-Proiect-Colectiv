@@ -18,10 +18,10 @@ interface ICourseState {
     description: string;
 }
 
-export default class CourseInfo extends Component<ICourseProps, ICourseState> {
-    state: ICourseState = {
+export default class CourseInfo extends Component<any, any> {
+    state = {
         isActive: this.props.isActive,
-        images: "",
+        image: "",
         title: "",
         category: "",
         description: "",
@@ -32,7 +32,7 @@ export default class CourseInfo extends Component<ICourseProps, ICourseState> {
         this.setState({
             title: this.props.title,
             category: this.props.category,
-            images: this.props.images,
+            image: this.props.image,
             description: this.props.description
         });
     }
@@ -41,7 +41,7 @@ export default class CourseInfo extends Component<ICourseProps, ICourseState> {
         this.props.saveData(1, { 
             title: this.state.title,
             category: this.state.category,
-            images: this.state.images,
+            image: this.state.image,
             description: this.state.description
         })
     }
@@ -57,9 +57,10 @@ export default class CourseInfo extends Component<ICourseProps, ICourseState> {
     };
 
     onChangeThumbnail = (event: any) => {
+        // console.log(event.target)
         this.setState({
             isActive: true,
-            images: URL.createObjectURL(event.target.files[0])
+            image: URL.createObjectURL(event.target.files[0])
         })
     }
 
@@ -74,7 +75,7 @@ export default class CourseInfo extends Component<ICourseProps, ICourseState> {
                         <label className="thumbnail" id="image-form" htmlFor="image-input">
                             <input id="image-input" type="file" onChange={this.onChangeThumbnail}/>
                             <div className="image-persuader">Upload Image Here</div>
-                            <img id="imager" src={this.state.images} alt=""/>
+                            <img id="imager" src={this.state.image} alt=""/>
                         </label>
                         <div className="name">
                             <label>Course Name</label>

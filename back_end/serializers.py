@@ -74,7 +74,7 @@ class ReviewSerializer(serializers.ModelSerializer):
     def get_stars(self,r):
         return r.rating.get_stars()
         
-    def get_comment(self, r):
+    def get_comment(self,r):
         return r.comment.get_content()
 
     def get_name(self,r):
@@ -97,4 +97,3 @@ class QuizSerializer(serializers.ModelSerializer):
     class Meta:
         model = Quiz
         fields = ['id', 'user_id', 'questions']
-

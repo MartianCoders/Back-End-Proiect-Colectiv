@@ -13,6 +13,7 @@ import LoginPage from './components/LoginPage';
 import { useNavigate } from 'react-router-dom';
 import WatchCourse from './components/WatchCourse';
 import RegisterPage from './components/RegisterPage';
+import MyCoursesPage from './components/MyCoursesPage';
 
 function App () {
   
@@ -30,12 +31,14 @@ function App () {
   return (
     <div className="App">
       <Routes>
-        <Route path='/home' element={<HomePage />}></Route>
+        <Route path='/home' element={<HomePage navigate={navigate}/>}></Route>
         <Route path='/login' element={<LoginPage navigate={navigate}/>}></Route>
-        <Route path='/register' element={<RegisterPage/>}></Route>
+        <Route path='/register' element={<RegisterPage navigate={navigate}/>}></Route>
         <Route path='/' element={<Navigate to="/login"/>}></Route>
         <Route path='/watch-course' element={<WatchCourse />}></Route>
-        <Route path='/addcourse' element={<AddCoursePage />}></Route>
+        <Route path='/add-course' element={<AddCoursePage navigate={navigate}/>}></Route>
+        <Route path='/watch-course/:courseId' element={<WatchCourse />}></Route>
+        <Route path='/my-courses' element={<MyCoursesPage navigate={navigate}/>}></Route>
       </Routes>
     </div>
     );

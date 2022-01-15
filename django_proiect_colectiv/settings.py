@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'cloudinary',
     'accounts',
-    'knox'
+    'knox',
+    'corsheaders'
 ]
 
 CORS_ALLOWED_ORIGINS = [
@@ -60,6 +61,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware'
 ]
 
 ROOT_URLCONF = 'django_proiect_colectiv.urls'
@@ -160,3 +163,4 @@ CLOUDINARY_ROOT_URL = 'https://res.cloudinary.com/pavelino-is-working/'
 # Asta e pt a specifica ce model ar trb user sa fie
 AUTH_USER_MODEL = "accounts.MyUser"
 CORS_ORIGIN_ALLOW = True
+CORS_ORIGIN_ALLOW_ALL = True 
