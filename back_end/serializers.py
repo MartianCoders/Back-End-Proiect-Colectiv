@@ -40,11 +40,14 @@ class TutorialSerializer(serializers.ModelSerializer):
     #     return RatingSerializer(Rating.objects.get(tutorial_id=t.id)).data
 
     def get_comments(self, tutorial):
-        return CommentSerializer(Comment.objects.filter(tutorial=tutorial.id), many=True).data
+        try:
+            return CommentSerializer(Comment.objects.filter(tutorial=tutorial.id), many=True).data
+        except ObjectDoesNotExist:
+            return []
 
     class Meta:
         model = Tutorial
-        fields = ['id', 'video', 'description', 'course', 'image', 'comments']
+        fields = ['id', 'video', 'course', 'image', 'comments']
 
 
 class CourseSerializer(serializers.ModelSerializer):
