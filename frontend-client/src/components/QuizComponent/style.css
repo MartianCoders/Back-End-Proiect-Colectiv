@@ -1,0 +1,15 @@
+.quiz-form{
+    width: 300px;
+    background: rgba(163, 160, 160, 0.933)
+}
+.question-answers{
+    display: flex;
+    flex-direction: column;
+}
+.answer-button{
+    margin: 0 auto;
+    width:100px
+}
+.message{
+    background-color: rgb(207, 20, 20);
+}
